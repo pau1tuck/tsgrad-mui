@@ -6,6 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import FullPageLoader from "./FullPageLoader";
 
 const Home = React.lazy(() => import("../modules/Home"));
+const Register = React.lazy(() => import("../modules/User/pages/Register"));
 const Dashboard = React.lazy(() => import("../modules/Dashboard"));
 
 const App: React.FC = () => {
@@ -14,6 +15,9 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path={ROUTES.home}>
           <Home />
+        </Route>
+        <Route exact path={ROUTES.register}>
+          <Register />
         </Route>
         <PrivateRoute exact path={ROUTES.dashboard}>
           <Dashboard />

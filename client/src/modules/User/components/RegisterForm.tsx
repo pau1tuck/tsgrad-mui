@@ -1,24 +1,26 @@
-import React from "react";
-import { useMutation, useLazyQuery } from "@apollo/client";
-import { useDebouncedCallback } from "use-debounce";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Input, Button, message as antdMessage } from "antd";
 import { useForm } from "react-hook-form";
 import { validationSchema } from "./loginValidations";
-import { REGISTER } from "./gql";
+import { useRegisterMutation } from "../../../config/graphql";
 import ErrorMessage from "../../../components/ErrorMessage";
-import Message from "../../../components/Message";
-import useAuthUser from "hooks/useAuthUser";
 
 enum fieldNames {
+  firstname = "firstName",
+  lastname = "lastName",
   email = "email",
   password = "password",
 }
 
-const RegisterForm = () => {
-  const { setAuthUser } = useAuthUser();
-  const [registerUser, { loading: isRegistering, error }] = useMutation(
-    REGISTER
-  );
+export const RegisterForm: React.FC = () => {
+  const history = useHistory();
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [createUser, { loading: isRegistering, error }] = useRegisterMutation();
   const { register, handleSubmit, setValue, errors } = useForm({
     validationSchema,
     mode: "onBlur",
@@ -37,46 +39,50 @@ const RegisterForm = () => {
     });
   });
 
-  const onFormSubmit = async (values: any) => {
-    const { email, password } = values;
-    const response: any = await registerUser({
-      variables: {
-        email,
-        password,
-      },
-    });
-
-    if (response) {
-      const token =
-        response &&
-        response.data &&
-        response.data.register &&
-        response.data.register.token;
-
-      if (token) {
-        setAuthUser(token);
-      }
-    }
-  };
-
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(fieldNames.email, e.target.value);
-  };
-
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)}>
-      <h2>Register</h2>
+    <form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        console.log("Form submitted");
+        const response = await createUser({
+          variables: {
+            firstname,
+            lastname,
+            email,
+            password,
+          },
+        });
+        console.log(response);
+        history.push("/my");
+      }}
+    >
       <Input
-        onChange={(e) => setValue(fieldNames.email, e.target.value)}
-        name={fieldNames.email}
-        placeholder="Email"
+        value={firstname}
+        placeholder="First name"
+        onChange={(e) => {
+          setFirstName(e.target.value);
+        }}
       />
-      <ErrorMessage errors={errors} name={fieldNames.email} />
       <Input
+        value={lastname}
+        placeholder="Last name"
+        onChange={(e) => {
+          setLastName(e.target.value);
+        }}
+      />
+      <Input
+        value={email}
+        placeholder="email"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <Input
+        value={password}
         type="password"
-        onChange={(e) => setValue(fieldNames.password, e.target.value)}
-        name={fieldNames.password}
-        placeholder="Password"
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
       />
       <ErrorMessage errors={errors} name={fieldNames.password} />
       <Button block type="primary" htmlType="submit" loading={isRegistering}>
@@ -85,5 +91,3 @@ const RegisterForm = () => {
     </form>
   );
 };
-
-export default RegisterForm;
