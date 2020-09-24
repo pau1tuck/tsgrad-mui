@@ -6885,7 +6885,7 @@ function addMethod(schemaType, name, fn) {
   if (typeof fn !== 'function') throw new TypeError('Method function must be provided');
   schemaType.prototype[name] = fn;
 }
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./mixed":"../node_modules/yup/lib/mixed.js","./boolean":"../node_modules/yup/lib/boolean.js","./string":"../node_modules/yup/lib/string.js","./number":"../node_modules/yup/lib/number.js","./date":"../node_modules/yup/lib/date.js","./object":"../node_modules/yup/lib/object.js","./array":"../node_modules/yup/lib/array.js","./Reference":"../node_modules/yup/lib/Reference.js","./Lazy":"../node_modules/yup/lib/Lazy.js","./ValidationError":"../node_modules/yup/lib/ValidationError.js","./util/reach":"../node_modules/yup/lib/util/reach.js","./util/isSchema":"../node_modules/yup/lib/util/isSchema.js","./setLocale":"../node_modules/yup/lib/setLocale.js"}],"modules/User/components/validations.tsx":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","./mixed":"../node_modules/yup/lib/mixed.js","./boolean":"../node_modules/yup/lib/boolean.js","./string":"../node_modules/yup/lib/string.js","./number":"../node_modules/yup/lib/number.js","./date":"../node_modules/yup/lib/date.js","./object":"../node_modules/yup/lib/object.js","./array":"../node_modules/yup/lib/array.js","./Reference":"../node_modules/yup/lib/Reference.js","./Lazy":"../node_modules/yup/lib/Lazy.js","./ValidationError":"../node_modules/yup/lib/ValidationError.js","./util/reach":"../node_modules/yup/lib/util/reach.js","./util/isSchema":"../node_modules/yup/lib/util/isSchema.js","./setLocale":"../node_modules/yup/lib/setLocale.js"}],"modules/User/components/loginValidations.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6929,8 +6929,8 @@ exports.validationSchema = validationSchema;
     return;
   }
 
-  reactHotLoader.register(fieldNames, "fieldNames", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/validations.tsx");
-  reactHotLoader.register(validationSchema, "validationSchema", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/validations.tsx");
+  reactHotLoader.register(fieldNames, "fieldNames", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/loginValidations.tsx");
+  reactHotLoader.register(validationSchema, "validationSchema", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/loginValidations.tsx");
 })();
 
 ;
@@ -6939,60 +6939,7 @@ exports.validationSchema = validationSchema;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"yup":"../node_modules/yup/lib/index.js"}],"modules/User/graphql/login.graphql.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LOGIN = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-const LOGIN = (0, _graphqlTag.default)`
-  mutation Login($email: String!, $password: String!) {
-    tokenAuth(email: $email, password: $password) {
-      token
-      user {
-        id
-        firstname
-        lastname
-        email
-      }
-    }
-  }
-`;
-exports.LOGIN = LOGIN;
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(LOGIN, "LOGIN", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/graphql/login.graphql.tsx");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-},{"graphql-tag":"../node_modules/graphql-tag/src/index.js"}],"../node_modules/react-spring/web.js":[function(require,module,exports) {
+},{"yup":"../node_modules/yup/lib/index.js"}],"../node_modules/react-spring/web.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9189,7 +9136,129 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","./Message":"components/Message.tsx"}],"modules/User/components/LoginForm.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Message":"components/Message.tsx"}],"config/constants/variables.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.authToken = exports.LOCAL_STORAGE = void 0;
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+var LOCAL_STORAGE;
+exports.LOCAL_STORAGE = LOCAL_STORAGE;
+
+(function (LOCAL_STORAGE) {
+  LOCAL_STORAGE["token"] = "x-token";
+})(LOCAL_STORAGE || (exports.LOCAL_STORAGE = LOCAL_STORAGE = {}));
+
+let authToken = "";
+exports.authToken = authToken;
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(LOCAL_STORAGE, "LOCAL_STORAGE", "/home/paul/Public/dev/tsgrad-mui/client/src/config/constants/variables.tsx");
+  reactHotLoader.register(authToken, "authToken", "/home/paul/Public/dev/tsgrad-mui/client/src/config/constants/variables.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{}],"modules/User/hooks/useAuthToken.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _client = require("@apollo/client");
+
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _routes = require("../../../config/routes.config");
+
+var _variables = require("../../../config/constants/variables");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+const useAuthToken = () => {
+  const client = (0, _client.useApolloClient)();
+  const history = (0, _reactRouterDom.useHistory)();
+
+  const setAuthCookie = token => {
+    localStorage.setItem(_variables.LOCAL_STORAGE.token, token);
+
+    _jsCookie.default.set("jwttoken", token);
+
+    history.push(_routes.ROUTES.dashboard);
+  };
+
+  const logout = () => {
+    client.resetStore();
+    localStorage.clear();
+    history.push("/");
+  };
+
+  return {
+    setAuthCookie,
+    logout
+  };
+};
+
+__signature__(useAuthToken, "useApolloClient{client}\nuseHistory{history}", () => [_client.useApolloClient, _reactRouterDom.useHistory]);
+
+const _default = useAuthToken;
+var _default2 = _default;
+exports.default = _default2;
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(useAuthToken, "useAuthToken", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/hooks/useAuthToken.tsx");
+  reactHotLoader.register(_default, "default", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/hooks/useAuthToken.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes.config":"config/routes.config.tsx","../../../config/constants/variables":"config/constants/variables.tsx"}],"modules/User/components/LoginForm.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9199,25 +9268,17 @@ exports.default = exports.LoginForm = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
-var _routes = require("../../../config/routes");
-
-var _client = require("@apollo/client");
-
 var _antd = require("antd");
 
 var _reactHookForm = require("react-hook-form");
 
-var _validations = require("./validations");
-
-var _login = require("../graphql/login.graphql");
+var _loginValidations = require("./loginValidations");
 
 var _ErrorMessage = _interopRequireDefault(require("../../../components/ErrorMessage"));
 
-var _authToken = require("../../../config/authToken");
-
 var _graphql = require("../../../config/graphql");
+
+var _useAuthToken = _interopRequireDefault(require("../hooks/useAuthToken"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9270,20 +9331,22 @@ var fieldNames;
 })(fieldNames || (fieldNames = {}));
 
 const LoginForm = () => {
-  const history = (0, _reactRouterDom.useHistory)();
+  const {
+    setAuthCookie
+  } = (0, _useAuthToken.default)();
   const {
     handleSubmit,
     errors,
     control
   } = (0, _reactHookForm.useForm)({
-    validationSchema: _validations.validationSchema,
+    validationSchema: _loginValidations.validationSchema,
     mode: "onChange"
   });
   const [login, {
     loading: isLogining,
     error,
     data: loginData
-  }] = (0, _client.useMutation)(_login.LOGIN);
+  }] = (0, _graphql.useLoginMutation)();
 
   _react.default.useEffect(() => {
     if (loginData) {}
@@ -9296,6 +9359,8 @@ const LoginForm = () => {
   }, [error]);
 
   const onFormSubmit = values => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+
     const {
       email,
       password
@@ -9308,6 +9373,8 @@ const LoginForm = () => {
       update: (store, {
         data
       }) => {
+        var _a;
+
         if (!data) {
           return null;
         }
@@ -9315,7 +9382,7 @@ const LoginForm = () => {
         store.writeQuery({
           query: _graphql.UserDocument,
           data: {
-            user: data.tokenAuth.user
+            user: (_a = data.tokenAuth) === null || _a === void 0 ? void 0 : _a.user
           }
         });
       }
@@ -9324,12 +9391,10 @@ const LoginForm = () => {
     console.log("Form submitted");
 
     if (response && response.data) {
-      const jwt = response.data.tokenAuth.token;
+      const jwt = (_a = response.data.tokenAuth) === null || _a === void 0 ? void 0 : _a.token;
 
       if (jwt) {
-        console.log(jwt);
-        (0, _authToken.setAuthToken)(jwt);
-        history.push(_routes.ROUTES.dashboard);
+        setAuthCookie(jwt);
       }
     }
   });
@@ -9365,7 +9430,7 @@ const LoginForm = () => {
 
 exports.LoginForm = LoginForm;
 
-__signature__(LoginForm, "useHistory{history}\nuseForm{{ handleSubmit, errors, control }}\nuseMutation{[login, { loading: isLogining, error, data: loginData }]}\nuseEffect{}\nuseEffect{}", () => [_reactRouterDom.useHistory, _reactHookForm.useForm, _client.useMutation]);
+__signature__(LoginForm, "useAuthToken{{ setAuthCookie }}\nuseForm{{ handleSubmit, errors, control }}\nuseLoginMutation{[login, { loading: isLogining, error, data: loginData },]}\nuseEffect{}\nuseEffect{}", () => [_useAuthToken.default, _reactHookForm.useForm, _graphql.useLoginMutation]);
 
 const _default = LoginForm;
 var _default2 = _default;
@@ -9391,13 +9456,13 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes":"config/routes.tsx","@apollo/client":"../node_modules/@apollo/client/index.js","antd":"../node_modules/antd/es/index.js","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","./validations":"modules/User/components/validations.tsx","../graphql/login.graphql":"modules/User/graphql/login.graphql.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx","../../../config/authToken":"config/authToken.tsx","../../../config/graphql":"config/graphql.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","antd":"../node_modules/antd/es/index.js","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","./loginValidations":"modules/User/components/loginValidations.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Login = void 0;
+exports.Login = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -9419,9 +9484,6 @@ const Login = () => {
 };
 
 exports.Login = Login;
-const _default = Login;
-var _default2 = _default;
-exports.default = _default2;
 ;
 
 (function () {
@@ -9432,7 +9494,6 @@ exports.default = _default2;
   }
 
   reactHotLoader.register(Login, "Login", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/pages/Login.tsx");
-  reactHotLoader.register(_default, "default", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/pages/Login.tsx");
 })();
 
 ;
@@ -9451,7 +9512,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Login = _interopRequireDefault(require("../User/pages/Login"));
+var _Login = require("../User/pages/Login");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9465,7 +9526,7 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 const Home = () => {
-  return /*#__PURE__*/_react.default.createElement("div", null, "Hello, Cocksucker.", /*#__PURE__*/_react.default.createElement(_Login.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, "Hello, Cocksucker.", /*#__PURE__*/_react.default.createElement(_Login.Login, null));
 };
 
 const _default = Home;
@@ -9518,7 +9579,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39003" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38121" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

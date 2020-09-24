@@ -1,9 +1,17 @@
-let authToken = "";
+import Cookies from "js-cookie";
+
+let authToken: any = "";
 
 export const setAuthToken = (jwt: string) => {
-  authToken = jwt;
+  Cookies.set("jwttoken", jwt);
 };
 
 export const getAuthToken = () => {
+  authToken = Cookies.get("jwttoken");
+  console.log(authToken);
   return authToken;
 };
+
+export enum LOCAL_STORAGE_TEMPLATE {
+  token = "x-token",
+}

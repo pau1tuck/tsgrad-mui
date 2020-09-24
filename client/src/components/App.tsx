@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { GlobalStyle } from "../styles/global";
-import { ROUTES } from "../config/routes";
+import { ROUTES } from "../config/routes.config";
 import PrivateRoute from "./PrivateRoute";
 import FullPageLoader from "./FullPageLoader";
 
@@ -25,3 +25,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// {auth ? <Redirect to="/dashboard" /> : <Home />}

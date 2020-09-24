@@ -1,14 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { ROUTES } from "../../../config/routes";
+import { ROUTES } from "../../../config/routes.config";
 import { useMutation } from "@apollo/client";
 import { Input, Button, message as antdMessage } from "antd";
 import { useForm, Controller } from "react-hook-form";
-import { validationSchema } from "./validations";
-import { LOGIN } from "../graphql/login.graphql";
+import { validationSchema } from "./loginValidations";
 import ErrorMessage from "../../../components/ErrorMessage";
-import { setAuthToken } from "../../../config/authToken";
-import { UserQuery, UserDocument } from "../../../config/graphql";
+import {
+  useLoginMutation,
+  UserQuery,
+  UserDocument,
+} from "../../../config/graphql";
+import useAuthToken from "../hooks/useAuthToken";
 
 enum fieldNames {
   email = "email",
@@ -16,15 +19,16 @@ enum fieldNames {
 }
 
 export const LoginForm: React.FC = () => {
-  const history = useHistory();
+  const { setAuthCookie } = useAuthToken();
   const { handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
   });
 
-  const [login, { loading: isLogining, error, data: loginData }] = useMutation(
-    LOGIN
-  );
+  const [
+    login,
+    { loading: isLogining, error, data: loginData },
+  ] = useLoginMutation();
 
   React.useEffect(() => {
     if (loginData) {
@@ -51,7 +55,7 @@ export const LoginForm: React.FC = () => {
         store.writeQuery<UserQuery>({
           query: UserDocument,
           data: {
-            user: data.tokenAuth.user,
+            user: data.tokenAuth?.user,
           },
         });
       },
@@ -60,11 +64,9 @@ export const LoginForm: React.FC = () => {
     console.log(response);
     console.log("Form submitted");
     if (response && response.data) {
-      const jwt = response.data.tokenAuth.token;
+      const jwt = response.data.tokenAuth?.token;
       if (jwt) {
-        console.log(jwt);
-        setAuthToken(jwt);
-        history.push(ROUTES.dashboard);
+        setAuthCookie(jwt);
       }
     }
   };
