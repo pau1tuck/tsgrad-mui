@@ -1,9 +1,7 @@
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -26,169 +24,165 @@ export type Scalars = {
 };
 
 export type CreateUser = {
-  __typename?: "CreateUser";
+  __typename?: 'CreateUser';
   user?: Maybe<UserType>;
 };
 
+
+
 export type Mutation = {
-  __typename?: "Mutation";
+  __typename?: 'Mutation';
   createUser?: Maybe<CreateUser>;
+  /** Obtain JSON Web Token mutation */
   tokenAuth?: Maybe<ObtainJsonWebToken>;
   verifyToken?: Maybe<Verify>;
   refreshToken?: Maybe<Refresh>;
 };
 
+
 export type MutationCreateUserArgs = {
-  email: Scalars["String"];
-  firstname: Scalars["String"];
-  lastname: Scalars["String"];
-  password: Scalars["String"];
+  email: Scalars['String'];
+  firstname: Scalars['String'];
+  lastname: Scalars['String'];
+  password: Scalars['String'];
 };
+
 
 export type MutationTokenAuthArgs = {
-  email: Scalars["String"];
-  password: Scalars["String"];
+  email: Scalars['String'];
+  password: Scalars['String'];
 };
+
 
 export type MutationVerifyTokenArgs = {
-  token?: Maybe<Scalars["String"]>;
+  token?: Maybe<Scalars['String']>;
 };
+
 
 export type MutationRefreshTokenArgs = {
-  token?: Maybe<Scalars["String"]>;
+  token?: Maybe<Scalars['String']>;
 };
 
+/** Obtain JSON Web Token mutation */
 export type ObtainJsonWebToken = {
-  __typename?: "ObtainJSONWebToken";
-  payload: Scalars["GenericScalar"];
-  refreshExpiresIn: Scalars["Int"];
-  user?: Maybe<UserType>;
-  token: Scalars["String"];
+  __typename?: 'ObtainJSONWebToken';
+  payload: Scalars['GenericScalar'];
+  refreshExpiresIn: Scalars['Int'];
+  token: Scalars['String'];
 };
 
 export type PostType = {
-  __typename?: "PostType";
-  id: Scalars["ID"];
-  title: Scalars["String"];
-  content: Scalars["String"];
+  __typename?: 'PostType';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  content: Scalars['String'];
   author: UserType;
-  createdAt: Scalars["DateTime"];
+  createdAt: Scalars['DateTime'];
 };
 
 export type Query = {
-  __typename?: "Query";
+  __typename?: 'Query';
   posts?: Maybe<Array<Maybe<PostType>>>;
   users?: Maybe<Array<Maybe<UserType>>>;
   user?: Maybe<UserType>;
 };
 
 export type Refresh = {
-  __typename?: "Refresh";
-  payload: Scalars["GenericScalar"];
-  refreshExpiresIn: Scalars["Int"];
-  token: Scalars["String"];
+  __typename?: 'Refresh';
+  payload: Scalars['GenericScalar'];
+  refreshExpiresIn: Scalars['Int'];
+  token: Scalars['String'];
 };
 
 export type UserType = {
-  __typename?: "UserType";
-  id: Scalars["ID"];
-  password: Scalars["String"];
-  lastLogin?: Maybe<Scalars["DateTime"]>;
+  __typename?: 'UserType';
+  id: Scalars['ID'];
+  password: Scalars['String'];
+  lastLogin?: Maybe<Scalars['DateTime']>;
   /** Designates that this user has all permissions without explicitly assigning them. */
-  isSuperuser: Scalars["Boolean"];
-  username: Scalars["String"];
-  firstname: Scalars["String"];
-  lastname: Scalars["String"];
-  email: Scalars["String"];
-  avatar: Scalars["String"];
-  isStaff: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  lastVisit: Scalars["DateTime"];
+  isSuperuser: Scalars['Boolean'];
+  username: Scalars['String'];
+  firstname: Scalars['String'];
+  lastname: Scalars['String'];
+  email: Scalars['String'];
+  avatar: Scalars['String'];
+  isStaff: Scalars['Boolean'];
+  createdAt: Scalars['DateTime'];
+  lastVisit: Scalars['DateTime'];
   post: Array<PostType>;
 };
 
 export type Verify = {
-  __typename?: "Verify";
-  payload: Scalars["GenericScalar"];
+  __typename?: 'Verify';
+  payload: Scalars['GenericScalar'];
 };
 
 export type LoginMutationVariables = Exact<{
-  email: Scalars["String"];
-  password: Scalars["String"];
+  email: Scalars['String'];
+  password: Scalars['String'];
 }>;
 
-export type LoginMutation = { __typename?: "Mutation" } & {
-  tokenAuth?: Maybe<
-    { __typename?: "ObtainJSONWebToken" } & Pick<
-      ObtainJsonWebToken,
-      "token"
-    > & {
-        user?: Maybe<
-          { __typename?: "UserType" } & Pick<
-            UserType,
-            "id" | "firstname" | "lastname" | "email"
-          >
-        >;
-      }
-  >;
-};
+
+export type LoginMutation = (
+  { __typename?: 'Mutation' }
+  & { tokenAuth?: Maybe<(
+    { __typename?: 'ObtainJSONWebToken' }
+    & Pick<ObtainJsonWebToken, 'token'>
+  )> }
+);
 
 export type RegisterMutationVariables = Exact<{
-  firstname: Scalars["String"];
-  lastname: Scalars["String"];
-  email: Scalars["String"];
-  password: Scalars["String"];
+  firstname: Scalars['String'];
+  lastname: Scalars['String'];
+  email: Scalars['String'];
+  password: Scalars['String'];
 }>;
 
-export type RegisterMutation = { __typename?: "Mutation" } & {
-  createUser?: Maybe<
-    { __typename?: "CreateUser" } & {
-      user?: Maybe<
-        { __typename?: "UserType" } & Pick<
-          UserType,
-          "id" | "firstname" | "lastname" | "email" | "password"
-        >
-      >;
-    }
-  >;
-};
 
-export type UserQueryVariables = Exact<{ [key: string]: never }>;
+export type RegisterMutation = (
+  { __typename?: 'Mutation' }
+  & { createUser?: Maybe<(
+    { __typename?: 'CreateUser' }
+    & { user?: Maybe<(
+      { __typename?: 'UserType' }
+      & Pick<UserType, 'id' | 'firstname' | 'lastname' | 'email' | 'password'>
+    )> }
+  )> }
+);
 
-export type UserQuery = { __typename?: "Query" } & {
-  user?: Maybe<
-    { __typename?: "UserType" } & Pick<
-      UserType,
-      "id" | "firstname" | "lastname" | "email"
-    >
-  >;
-};
+export type UserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UserQuery = (
+  { __typename?: 'Query' }
+  & { user?: Maybe<(
+    { __typename?: 'UserType' }
+    & Pick<UserType, 'id' | 'firstname' | 'lastname' | 'email'>
+  )> }
+);
 
 export type VerifyTokenMutationVariables = Exact<{
-  token: Scalars["String"];
+  token: Scalars['String'];
 }>;
 
-export type VerifyTokenMutation = { __typename?: "Mutation" } & {
-  verifyToken?: Maybe<{ __typename?: "Verify" } & Pick<Verify, "payload">>;
-};
+
+export type VerifyTokenMutation = (
+  { __typename?: 'Mutation' }
+  & { verifyToken?: Maybe<(
+    { __typename?: 'Verify' }
+    & Pick<Verify, 'payload'>
+  )> }
+);
+
 
 export const LoginDocument = gql`
-  mutation Login($email: String!, $password: String!) {
-    tokenAuth(email: $email, password: $password) {
-      token
-      user {
-        id
-        firstname
-        lastname
-        email
-      }
-    }
+    mutation Login($email: String!, $password: String!) {
+  tokenAuth(email: $email, password: $password) {
+    token
   }
-`;
-export type LoginMutationFn = Apollo.MutationFunction<
-  LoginMutation,
-  LoginMutationVariables
->;
+}
+    `;
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 
 /**
  * __useLoginMutation__
@@ -208,50 +202,26 @@ export type LoginMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useLoginMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    LoginMutation,
-    LoginMutationVariables
-  >
-) {
-  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(
-    LoginDocument,
-    baseOptions
-  );
-}
+export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
+      }
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
-export type LoginMutationOptions = Apollo.BaseMutationOptions<
-  LoginMutation,
-  LoginMutationVariables
->;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const RegisterDocument = gql`
-  mutation Register(
-    $firstname: String!
-    $lastname: String!
-    $email: String!
-    $password: String!
-  ) {
-    createUser(
-      firstname: $firstname
-      lastname: $lastname
-      email: $email
-      password: $password
-    ) {
-      user {
-        id
-        firstname
-        lastname
-        email
-        password
-      }
+    mutation Register($firstname: String!, $lastname: String!, $email: String!, $password: String!) {
+  createUser(firstname: $firstname, lastname: $lastname, email: $email, password: $password) {
+    user {
+      id
+      firstname
+      lastname
+      email
+      password
     }
   }
-`;
-export type RegisterMutationFn = Apollo.MutationFunction<
-  RegisterMutation,
-  RegisterMutationVariables
->;
+}
+    `;
+export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>;
 
 /**
  * __useRegisterMutation__
@@ -273,33 +243,22 @@ export type RegisterMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRegisterMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RegisterMutation,
-    RegisterMutationVariables
-  >
-) {
-  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(
-    RegisterDocument,
-    baseOptions
-  );
-}
+export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
+        return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, baseOptions);
+      }
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
-export type RegisterMutationOptions = Apollo.BaseMutationOptions<
-  RegisterMutation,
-  RegisterMutationVariables
->;
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const UserDocument = gql`
-  query User {
-    user {
-      id
-      firstname
-      lastname
-      email
-    }
+    query User {
+  user {
+    id
+    firstname
+    lastname
+    email
   }
-`;
+}
+    `;
 
 /**
  * __useUserQuery__
@@ -316,36 +275,23 @@ export const UserDocument = gql`
  *   },
  * });
  */
-export function useUserQuery(
-  baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>
-) {
-  return Apollo.useQuery<UserQuery, UserQueryVariables>(
-    UserDocument,
-    baseOptions
-  );
-}
-export function useUserLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>
-) {
-  return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(
-    UserDocument,
-    baseOptions
-  );
-}
+export function useUserQuery(baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
+        return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+      }
+export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
+          return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+        }
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
 export const VerifyTokenDocument = gql`
-  mutation VerifyToken($token: String!) {
-    verifyToken(token: $token) {
-      payload
-    }
+    mutation VerifyToken($token: String!) {
+  verifyToken(token: $token) {
+    payload
   }
-`;
-export type VerifyTokenMutationFn = Apollo.MutationFunction<
-  VerifyTokenMutation,
-  VerifyTokenMutationVariables
->;
+}
+    `;
+export type VerifyTokenMutationFn = Apollo.MutationFunction<VerifyTokenMutation, VerifyTokenMutationVariables>;
 
 /**
  * __useVerifyTokenMutation__
@@ -364,24 +310,9 @@ export type VerifyTokenMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useVerifyTokenMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    VerifyTokenMutation,
-    VerifyTokenMutationVariables
-  >
-) {
-  return Apollo.useMutation<VerifyTokenMutation, VerifyTokenMutationVariables>(
-    VerifyTokenDocument,
-    baseOptions
-  );
-}
-export type VerifyTokenMutationHookResult = ReturnType<
-  typeof useVerifyTokenMutation
->;
-export type VerifyTokenMutationResult = Apollo.MutationResult<
-  VerifyTokenMutation
->;
-export type VerifyTokenMutationOptions = Apollo.BaseMutationOptions<
-  VerifyTokenMutation,
-  VerifyTokenMutationVariables
->;
+export function useVerifyTokenMutation(baseOptions?: Apollo.MutationHookOptions<VerifyTokenMutation, VerifyTokenMutationVariables>) {
+        return Apollo.useMutation<VerifyTokenMutation, VerifyTokenMutationVariables>(VerifyTokenDocument, baseOptions);
+      }
+export type VerifyTokenMutationHookResult = ReturnType<typeof useVerifyTokenMutation>;
+export type VerifyTokenMutationResult = Apollo.MutationResult<VerifyTokenMutation>;
+export type VerifyTokenMutationOptions = Apollo.BaseMutationOptions<VerifyTokenMutation, VerifyTokenMutationVariables>;

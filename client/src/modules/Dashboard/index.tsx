@@ -1,8 +1,8 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
-import { Route, useHistory } from "react-router-dom";
+import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom";
 import { useUserQuery } from "../../config/graphql";
-import { setAuthToken } from "../../config/authToken";
 
 const Dashboard = () => {
   const { data, error, loading } = useUserQuery();
@@ -11,6 +11,8 @@ const Dashboard = () => {
 
   const logout = () => {
     client.resetStore();
+    Cookie.remove("jwttoken");
+    Cookie.remove("csrftoken");
     localStorage.clear();
     history.push("/");
   };

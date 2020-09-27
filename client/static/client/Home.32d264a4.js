@@ -117,7 +117,80 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"config/constants/variables.tsx":[function(require,module,exports) {
+})({"../node_modules/@material-ui/icons/LockOutlined.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
+}), 'LockOutlined');
+
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"modules/User/validations/login.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.validationSchema = void 0;
+
+var yup = _interopRequireWildcard(require("yup"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+var fieldNames;
+
+(function (fieldNames) {
+  fieldNames["email"] = "email";
+  fieldNames["password"] = "password";
+})(fieldNames || (fieldNames = {}));
+
+const validationSchema = yup.object().shape({
+  [fieldNames.email]: yup.string().min(6).max(30).required().label("Email address"),
+  [fieldNames.password]: yup.string().min(8).max(30).required().label("Password")
+});
+exports.validationSchema = validationSchema;
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(fieldNames, "fieldNames", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/validations/login.tsx");
+  reactHotLoader.register(validationSchema, "validationSchema", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/validations/login.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"yup":"../node_modules/yup/lib/index.js"}],"config/constants/variables.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -176,7 +249,7 @@ var _jsCookie = _interopRequireDefault(require("js-cookie"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _routes = require("../../../config/routes.config");
+var _routes = require("../../../config/routes");
 
 var _variables = require("../../../config/constants/variables");
 
@@ -198,7 +271,8 @@ const useAuthToken = () => {
   const setAuthCookie = token => {
     localStorage.setItem(_variables.LOCAL_STORAGE.token, token);
 
-    _jsCookie.default.set("jwttoken", token);
+    _jsCookie.default.set("jwttoken", token); // Cookie.set("jwttoken", token { secure: true });
+
 
     history.push(_routes.ROUTES.dashboard);
   };
@@ -239,7 +313,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes.config":"config/routes.config.tsx","../../../config/constants/variables":"config/constants/variables.tsx"}],"modules/User/components/LoginForm.tsx":[function(require,module,exports) {
+},{"@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes":"config/routes.tsx","../../../config/constants/variables":"config/constants/variables.tsx"}],"modules/User/components/LoginForm.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -249,11 +323,17 @@ exports.default = exports.LoginForm = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _antd = require("antd");
+var _reactRouterDom = require("react-router-dom");
+
+var _styles = require("@material-ui/core/styles");
+
+var _core = require("@material-ui/core");
+
+var _LockOutlined = _interopRequireDefault(require("@material-ui/icons/LockOutlined"));
 
 var _reactHookForm = require("react-hook-form");
 
-var _loginValidations = require("./loginValidations");
+var _login = require("../validations/login");
 
 var _ErrorMessage = _interopRequireDefault(require("../../../components/ErrorMessage"));
 
@@ -304,6 +384,32 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
   });
 };
 
+const useStyles = (0, _styles.makeStyles)(({
+  spacing,
+  palette
+}) => (0, _styles.createStyles)({
+  paper: {
+    marginTop: spacing(4),
+    padding: spacing(5),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  avatar: {
+    margin: spacing(1),
+    backgroundColor: palette.secondary.main
+  },
+  form: {
+    width: "100%",
+    marginTop: spacing(3)
+  },
+  submit: {
+    margin: spacing(3, 0, 2)
+  },
+  options: {
+    justifyContent: "center"
+  }
+}));
 var fieldNames;
 
 (function (fieldNames) {
@@ -312,32 +418,20 @@ var fieldNames;
 })(fieldNames || (fieldNames = {}));
 
 const LoginForm = () => {
+  const classes = useStyles();
+  const [login] = (0, _graphql.useLoginMutation)();
   const {
-    setAuthCookie
-  } = (0, _useAuthToken.default)();
-  const {
+    register,
     handleSubmit,
     errors,
     control
   } = (0, _reactHookForm.useForm)({
-    validationSchema: _loginValidations.validationSchema,
+    validationSchema: _login.validationSchema,
     mode: "onChange"
   });
-  const [login, {
-    loading: isLogining,
-    error,
-    data: loginData
-  }] = (0, _graphql.useLoginMutation)();
-
-  _react.default.useEffect(() => {
-    if (loginData) {}
-  }, [loginData]);
-
-  _react.default.useEffect(() => {
-    if (error) {
-      _antd.message.error(error.message);
-    }
-  }, [error]);
+  const {
+    setAuthCookie
+  } = (0, _useAuthToken.default)();
 
   const onFormSubmit = values => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -350,22 +444,6 @@ const LoginForm = () => {
       variables: {
         email,
         password
-      },
-      update: (store, {
-        data
-      }) => {
-        var _a;
-
-        if (!data) {
-          return null;
-        }
-
-        store.writeQuery({
-          query: _graphql.UserDocument,
-          data: {
-            user: (_a = data.tokenAuth) === null || _a === void 0 ? void 0 : _a.user
-          }
-        });
       }
     });
     console.log(response);
@@ -380,38 +458,81 @@ const LoginForm = () => {
     }
   });
 
-  return /*#__PURE__*/_react.default.createElement("form", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Avatar, {
+    className: classes.avatar
+  }, /*#__PURE__*/_react.default.createElement(_LockOutlined.default, null)), /*#__PURE__*/_react.default.createElement(_core.Typography, {
+    component: "h1",
+    variant: "h5"
+  }, "Sign in"), /*#__PURE__*/_react.default.createElement("form", {
+    className: classes.form,
+    noValidate: true,
     onSubmit: handleSubmit(onFormSubmit)
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Log in"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactHookForm.Controller, {
+  }, /*#__PURE__*/_react.default.createElement(_core.TextField, {
+    id: fieldNames.email,
     name: fieldNames.email,
-    control: control,
-    as: /*#__PURE__*/_react.default.createElement(_antd.Input, {
-      placeholder: "Email"
-    })
+    type: fieldNames.email,
+    autoComplete: fieldNames.email,
+    inputRef: register,
+    label: "Email address",
+    required: true,
+    variant: "outlined",
+    margin: "normal",
+    fullWidth: true,
+    autoFocus: true
   }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
     errors: errors,
     name: fieldNames.email
-  }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactHookForm.Controller, {
+  }), /*#__PURE__*/_react.default.createElement(_core.TextField, {
+    id: fieldNames.password,
     name: fieldNames.password,
-    control: control,
-    as: /*#__PURE__*/_react.default.createElement(_antd.Input, {
-      type: "password",
-      placeholder: "Password"
-    })
-  }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
+    type: fieldNames.password,
+    autoComplete: "current-password",
+    inputRef: register,
+    label: "Password",
+    required: true,
+    variant: "outlined",
+    margin: "normal",
+    fullWidth: true
+  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
     errors: errors,
     name: fieldNames.password
-  }), /*#__PURE__*/_react.default.createElement(_antd.Button, {
-    block: true,
-    type: "primary",
-    htmlType: "submit",
-    loading: isLogining
-  }, "Log in"));
+  }), /*#__PURE__*/_react.default.createElement(_core.FormControlLabel, {
+    control: /*#__PURE__*/_react.default.createElement(_reactHookForm.Controller, {
+      as: _core.Checkbox,
+      control: control,
+      defaultValue: false,
+      name: "remember-me",
+      color: "primary"
+    }),
+    label: "Remember me"
+  }), /*#__PURE__*/_react.default.createElement(_core.Button, {
+    type: "submit",
+    variant: "contained",
+    color: "primary",
+    fullWidth: true,
+    className: classes.submit
+  }, "Sign in"), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    container: true,
+    className: classes.options
+  }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    item: true,
+    xs: true
+  }, /*#__PURE__*/_react.default.createElement(_core.Link, {
+    component: _reactRouterDom.Link,
+    to: "/",
+    variant: "body2"
+  }, "Forgot password?")), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    item: true
+  }, /*#__PURE__*/_react.default.createElement(_core.Link, {
+    component: _reactRouterDom.Link,
+    to: "/register",
+    variant: "body2"
+  }, "Don't have an account? Sign up")))));
 };
 
 exports.LoginForm = LoginForm;
 
-__signature__(LoginForm, "useAuthToken{{ setAuthCookie }}\nuseForm{{ handleSubmit, errors, control }}\nuseLoginMutation{[login, { loading: isLogining, error, data: loginData },]}\nuseEffect{}\nuseEffect{}", () => [_useAuthToken.default, _reactHookForm.useForm, _graphql.useLoginMutation]);
+__signature__(LoginForm, "useStyles{classes}\nuseLoginMutation{[login]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}", () => [useStyles, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default]);
 
 const _default = LoginForm;
 var _default2 = _default;
@@ -426,6 +547,7 @@ exports.default = _default2;
   }
 
   reactHotLoader.register(__awaiter, "__awaiter", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/LoginForm.tsx");
+  reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/LoginForm.tsx");
   reactHotLoader.register(fieldNames, "fieldNames", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/LoginForm.tsx");
   reactHotLoader.register(LoginForm, "LoginForm", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/LoginForm.tsx");
   reactHotLoader.register(_default, "default", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/LoginForm.tsx");
@@ -437,17 +559,23 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","antd":"../node_modules/antd/es/index.js","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","./loginValidations":"modules/User/components/loginValidations.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/LockOutlined":"../node_modules/@material-ui/icons/LockOutlined.js","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/login":"modules/User/validations/login.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Login = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _LoginForm = _interopRequireDefault(require("../components/LoginForm"));
+var _styles = require("@material-ui/core/styles");
+
+var _core = require("@material-ui/core");
+
+var _LoginForm = require("../components/LoginForm");
+
+var _Footer = require("../../../components/Footer");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -460,11 +588,34 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
   return a;
 };
 
+const useStyles = (0, _styles.makeStyles)(({
+  spacing
+}) => (0, _styles.createStyles)({
+  paper: {
+    marginTop: spacing(4),
+    padding: spacing(5),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+}));
+
 const Login = () => {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_LoginForm.default, null));
+  const classes = useStyles();
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Container, {
+    component: "main",
+    maxWidth: "xs"
+  }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
+    elevation: 3,
+    className: classes.paper
+  }, /*#__PURE__*/_react.default.createElement(_LoginForm.LoginForm, null))), /*#__PURE__*/_react.default.createElement(_Footer.Footer, null));
 };
 
-exports.Login = Login;
+__signature__(Login, "useStyles{classes}", () => [useStyles]);
+
+const _default = Login;
+var _default2 = _default;
+exports.default = _default2;
 ;
 
 (function () {
@@ -474,7 +625,9 @@ exports.Login = Login;
     return;
   }
 
+  reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/pages/Login.tsx");
   reactHotLoader.register(Login, "Login", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/pages/Login.tsx");
+  reactHotLoader.register(_default, "default", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/pages/Login.tsx");
 })();
 
 ;
@@ -483,7 +636,7 @@ exports.Login = Login;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","../components/LoginForm":"modules/User/components/LoginForm.tsx"}],"modules/Home/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../components/LoginForm":"modules/User/components/LoginForm.tsx","../../../components/Footer":"components/Footer.tsx"}],"modules/Home/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -493,7 +646,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Login = require("../User/pages/Login");
+var _Login = _interopRequireDefault(require("../User/pages/Login"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -507,7 +660,7 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 const Home = () => {
-  return /*#__PURE__*/_react.default.createElement("div", null, "Hello, Cocksucker.", /*#__PURE__*/_react.default.createElement(_Login.Login, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, "Hello, Cocksucker.", /*#__PURE__*/_react.default.createElement(_Login.default, null));
 };
 
 const _default = Home;
@@ -560,7 +713,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37155" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38571" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

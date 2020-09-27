@@ -1,17 +1,51 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { ROUTES } from "../../../config/routes.config";
-import { useMutation } from "@apollo/client";
-import { Input, Button, message as antdMessage } from "antd";
-import { useForm, Controller } from "react-hook-form";
-import { validationSchema } from "./loginValidations";
-import ErrorMessage from "../../../components/ErrorMessage";
+import { Link as RouterLink } from "react-router-dom";
+
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import {
-  useLoginMutation,
-  UserQuery,
-  UserDocument,
-} from "../../../config/graphql";
+  Avatar,
+  Button,
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  Link,
+  Paper,
+  TextField,
+  Typography,
+  Zoom,
+} from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { message as antdMessage } from "antd";
+import { useForm, Controller } from "react-hook-form";
+import { validationSchema } from "../validations/login";
+import ErrorMessage from "../../../components/ErrorMessage";
+import { useLoginMutation } from "../../../config/graphql";
 import useAuthToken from "../hooks/useAuthToken";
+
+const useStyles = makeStyles(({ spacing, palette }: Theme) =>
+  createStyles({
+    paper: {
+      marginTop: spacing(4),
+      padding: spacing(5),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    avatar: {
+      margin: spacing(1),
+      backgroundColor: palette.secondary.main,
+    },
+    form: {
+      width: "100%", // Fixes IE 11 issue.
+      marginTop: spacing(3),
+    },
+    submit: { margin: spacing(3, 0, 2) },
+    options: {
+      justifyContent: "center",
+    },
+  })
+);
 
 enum fieldNames {
   email = "email",
@@ -19,27 +53,13 @@ enum fieldNames {
 }
 
 export const LoginForm: React.FC = () => {
-  const { setAuthCookie } = useAuthToken();
-  const { handleSubmit, errors, control } = useForm({
+  const classes = useStyles();
+  const [login] = useLoginMutation();
+  const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
   });
-
-  const [
-    login,
-    { loading: isLogining, error, data: loginData },
-  ] = useLoginMutation();
-
-  React.useEffect(() => {
-    if (loginData) {
-    }
-  }, [loginData]);
-
-  React.useEffect(() => {
-    if (error) {
-      antdMessage.error(error.message);
-    }
-  }, [error]);
+  const { setAuthCookie } = useAuthToken();
 
   const onFormSubmit = async (values: any) => {
     const { email, password } = values;
@@ -47,17 +67,6 @@ export const LoginForm: React.FC = () => {
       variables: {
         email,
         password,
-      },
-      update: (store, { data }) => {
-        if (!data) {
-          return null;
-        }
-        store.writeQuery<UserQuery>({
-          query: UserDocument,
-          data: {
-            user: data.tokenAuth?.user,
-          },
-        });
       },
     });
 
@@ -72,27 +81,80 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)}>
-      <h2>Log in</h2>
-      <br />
-      <Controller
-        name={fieldNames.email}
-        control={control}
-        as={<Input placeholder="Email" />}
-      />
-      <ErrorMessage errors={errors} name={fieldNames.email} />
-      <br />
-      <Controller
-        name={fieldNames.password}
-        control={control}
-        as={<Input type="password" placeholder="Password" />}
-      />
-      <br />
-      <ErrorMessage errors={errors} name={fieldNames.password} />
-      <Button block type="primary" htmlType="submit" loading={isLogining}>
-        Log in
-      </Button>
-    </form>
+    <>
+      <Avatar className={classes.avatar}>
+        <LockOutlinedIcon />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        Sign in
+      </Typography>
+      <form
+        className={classes.form}
+        noValidate
+        onSubmit={handleSubmit(onFormSubmit)}
+      >
+        <TextField
+          id={fieldNames.email}
+          name={fieldNames.email}
+          type={fieldNames.email}
+          autoComplete={fieldNames.email}
+          inputRef={register}
+          label="Email address"
+          required
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          autoFocus
+        />
+        <ErrorMessage errors={errors} name={fieldNames.email} />
+        <TextField
+          id={fieldNames.password}
+          name={fieldNames.password}
+          type={fieldNames.password}
+          autoComplete="current-password"
+          inputRef={register}
+          label="Password"
+          required
+          variant="outlined"
+          margin="normal"
+          fullWidth
+        />
+        <ErrorMessage errors={errors} name={fieldNames.password} />
+        <FormControlLabel
+          control={
+            <Controller
+              as={Checkbox}
+              control={control}
+              defaultValue={false}
+              name="remember-me"
+              color="primary"
+            />
+          }
+          label="Remember me"
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          className={classes.submit}
+        >
+          Sign in
+        </Button>
+        <Grid container className={classes.options}>
+          <Grid item xs>
+            <Link component={RouterLink} to="/" variant="body2">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link component={RouterLink} to="/register" variant="body2">
+              Don't have an account? Sign up
+            </Link>
+          </Grid>
+        </Grid>
+      </form>
+    </>
   );
 };
 

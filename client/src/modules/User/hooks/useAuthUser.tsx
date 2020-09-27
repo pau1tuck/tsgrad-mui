@@ -1,7 +1,7 @@
 import { useApolloClient } from "@apollo/client";
 import Cookie from "js-cookie";
 import { useHistory } from "react-router-dom";
-import { ROUTES } from "../../../config/routes.config";
+import { ROUTES } from "../../../config/routes";
 import { LOCAL_STORAGE_TEMPLATE } from "../../../config/constants/enumerations";
 
 const useAuthUser = () => {

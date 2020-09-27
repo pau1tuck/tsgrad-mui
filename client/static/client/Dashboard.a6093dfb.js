@@ -129,6 +129,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _client = require("@apollo/client");
 
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
+
 var _reactRouterDom = require("react-router-dom");
 
 var _graphql = require("../../config/graphql");
@@ -157,6 +159,11 @@ const Dashboard = () => {
 
   const logout = () => {
     client.resetStore();
+
+    _jsCookie.default.remove("jwttoken");
+
+    _jsCookie.default.remove("csrftoken");
+
     localStorage.clear();
     history.push("/");
   };
@@ -198,7 +205,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","@apollo/client":"../node_modules/@apollo/client/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../config/graphql":"config/graphql.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../config/graphql":"config/graphql.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -226,7 +233,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37155" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38571" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

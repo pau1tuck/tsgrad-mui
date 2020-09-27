@@ -1,14 +1,34 @@
-import React, { useEffect } from "react";
-import { useHistory, Redirect } from "react-router-dom";
-import { getAuthToken } from "../../../config/authToken";
-import { useUserQuery } from "../../../config/graphql";
-import { ROUTES } from "../../../config/routes.config";
-import LoginForm from "../components/LoginForm";
+import React from "react";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { Container, Paper } from "@material-ui/core";
+import { LoginForm } from "../components/LoginForm";
+import { Footer } from "../../../components/Footer";
 
-export const Login: React.FC = () => {
+const useStyles = makeStyles(({ spacing }: Theme) =>
+  createStyles({
+    paper: {
+      marginTop: spacing(4),
+      padding: spacing(5),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  })
+);
+
+const Login = () => {
+  const classes = useStyles();
   return (
     <div>
-      <LoginForm />
+      <Container component="main" maxWidth="xs">
+        <Paper elevation={3} className={classes.paper}>
+          <LoginForm />
+          {/*<Footer />*/}
+        </Paper>
+      </Container>
+      <Footer />
     </div>
   );
 };
+
+export default Login;

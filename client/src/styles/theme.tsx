@@ -1,13 +1,21 @@
-const theme = {
-  colors: {
-    primary: "#ad5389",
-    secondary: "#3c1053",
-    success: "#11998e",
-    error: "#ff4161",
-    dark: "#272C34",
-    facebook: "#385898",
-    google: "#f83232",
-  },
-};
+import { createMuiTheme } from "@material-ui/core/styles";
 
-export default theme;
+declare module "@material-ui/core/styles/createMuiTheme" {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createMuiTheme`
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
+
+export const theme = createMuiTheme({
+  status: {
+    danger: "#FFFFFF",
+  },
+});
