@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-enum fieldNames {
+export enum fieldNames {
   email = "email",
   password = "password",
 }
@@ -8,6 +8,7 @@ enum fieldNames {
 export const validationSchema = yup.object().shape({
   [fieldNames.email]: yup
     .string()
+    .email()
     .min(6)
     .max(30)
     .required()

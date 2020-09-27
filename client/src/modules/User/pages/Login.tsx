@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
-import { LoginForm } from "../components/LoginForm";
+import LoginForm from "../components/LoginForm";
 import { Footer } from "../../../components/Footer";
 
 const useStyles = makeStyles(({ spacing }: Theme) =>

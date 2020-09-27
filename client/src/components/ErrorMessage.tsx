@@ -1,17 +1,20 @@
-import React from "react";
-import Message from "./Message";
+import React, { useEffect } from "react";
+import { useAlert } from "react-alert";
 
 interface IErrorMessage {
   errors: any;
   name: string;
 }
 
-const ErrorMessage = ({ errors, name }: IErrorMessage) => {
+const showAlert = useEffect(() => {
+  const alert = useAlert();
+  alert.show("Shite.");
+});
+
+export const ErrorMessage = ({ errors, name }: IErrorMessage) => {
   // Note: if you are using FormContext, then you can use Errors without props eg:
   // const { errors } = useFormContext();
   if (!errors[name]) return null;
 
-  return <Message color="error">{errors[name].message}</Message>;
+  return <div>.</div>;
 };
-
-export default ErrorMessage;

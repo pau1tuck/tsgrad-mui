@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -6,22 +6,21 @@ import {
   Avatar,
   Button,
   Checkbox,
-  Container,
   FormControlLabel,
   Grid,
   Link,
-  Paper,
   TextField,
   Typography,
   Zoom,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { message as antdMessage } from "antd";
+import Input from "./Input";
 import { useForm, Controller } from "react-hook-form";
-import { validationSchema } from "../validations/login";
-import ErrorMessage from "../../../components/ErrorMessage";
+import { fieldNames, validationSchema } from "../validations/login";
 import { useLoginMutation } from "../../../config/graphql";
 import useAuthToken from "../hooks/useAuthToken";
+import { ErrorMessage } from "../../../components/ErrorMessage";
+import { useAlert } from "react-alert";
 
 const useStyles = makeStyles(({ spacing, palette }: Theme) =>
   createStyles({
@@ -47,14 +46,9 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
   })
 );
 
-enum fieldNames {
-  email = "email",
-  password = "password",
-}
-
-export const LoginForm: React.FC = () => {
+const LoginForm = () => {
   const classes = useStyles();
-  const [login] = useLoginMutation();
+  const [login, { data }] = useLoginMutation();
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
@@ -93,33 +87,8 @@ export const LoginForm: React.FC = () => {
         noValidate
         onSubmit={handleSubmit(onFormSubmit)}
       >
-        <TextField
-          id={fieldNames.email}
-          name={fieldNames.email}
-          type={fieldNames.email}
-          autoComplete={fieldNames.email}
-          inputRef={register}
-          label="Email address"
-          required
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          autoFocus
-        />
-        <ErrorMessage errors={errors} name={fieldNames.email} />
-        <TextField
-          id={fieldNames.password}
-          name={fieldNames.password}
-          type={fieldNames.password}
-          autoComplete="current-password"
-          inputRef={register}
-          label="Password"
-          required
-          variant="outlined"
-          margin="normal"
-          fullWidth
-        />
-        <ErrorMessage errors={errors} name={fieldNames.password} />
+        <Input type={fieldNames.email} register={register} autofocus />
+        <Input type={fieldNames.password} register={register} />
         <FormControlLabel
           control={
             <Controller

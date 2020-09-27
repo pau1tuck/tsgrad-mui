@@ -142,7 +142,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.validationSchema = void 0;
+exports.validationSchema = exports.fieldNames = void 0;
 
 var yup = _interopRequireWildcard(require("yup"));
 
@@ -160,19 +160,20 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 var fieldNames;
+exports.fieldNames = fieldNames;
 
 (function (fieldNames) {
   fieldNames["firstname"] = "firstname";
   fieldNames["lastname"] = "lastname";
   fieldNames["email"] = "email";
   fieldNames["password"] = "password";
-})(fieldNames || (fieldNames = {}));
+})(fieldNames || (exports.fieldNames = fieldNames = {}));
 
 const validationSchema = yup.object().shape({
-  [fieldNames.firstname]: yup.string().email().required().label("First name"),
-  [fieldNames.lastname]: yup.string().email().required().label("Last name"),
-  [fieldNames.email]: yup.string().email().required().label("Email"),
-  [fieldNames.password]: yup.string().min(4).max(30).required().label("Password")
+  [fieldNames.firstname]: yup.string().required().label("First name"),
+  [fieldNames.lastname]: yup.string().required().label("Last name"),
+  [fieldNames.email]: yup.string().email().required().label("Email address"),
+  [fieldNames.password]: yup.string().min(8).max(30).required().label("Password")
 });
 exports.validationSchema = validationSchema;
 ;
@@ -212,13 +213,11 @@ var _core = require("@material-ui/core");
 
 var _AccountCircleOutlined = _interopRequireDefault(require("@material-ui/icons/AccountCircleOutlined"));
 
-var _antd = require("antd");
+var _Input = _interopRequireDefault(require("./Input"));
 
 var _reactHookForm = require("react-hook-form");
 
 var _register = require("../validations/register");
-
-var _ErrorMessage = _interopRequireDefault(require("../../../components/ErrorMessage"));
 
 var _graphql = require("../../../config/graphql");
 
@@ -291,14 +290,6 @@ const useStyles = (0, _styles.makeStyles)(({
     justifyContent: "center"
   }
 }));
-var fieldNames;
-
-(function (fieldNames) {
-  fieldNames["firstname"] = "firstname";
-  fieldNames["lastname"] = "lastname";
-  fieldNames["email"] = "email";
-  fieldNames["password"] = "password";
-})(fieldNames || (fieldNames = {}));
 
 const RegisterForm = () => {
   const classes = useStyles();
@@ -319,13 +310,7 @@ const RegisterForm = () => {
   });
 
   _react.default.useEffect(() => {
-    if (error) {
-      _antd.message.error(error.message);
-    }
-  }, [error]);
-
-  _react.default.useEffect(() => {
-    Object.keys(fieldNames).forEach(key => {
+    Object.keys(_register.fieldNames).forEach(key => {
       register({
         name: key
       });
@@ -361,63 +346,19 @@ const RegisterForm = () => {
     className: classes.form,
     noValidate: true,
     onSubmit: handleSubmit(onFormSubmit)
-  }, /*#__PURE__*/_react.default.createElement(_core.TextField, {
-    id: fieldNames.firstname,
-    name: fieldNames.firstname,
-    type: fieldNames.firstname,
-    autoComplete: fieldNames.firstname,
-    inputRef: register,
-    label: "Email address",
-    required: true,
-    variant: "outlined",
-    margin: "normal",
-    fullWidth: true,
-    autoFocus: true
-  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
-    errors: errors,
-    name: fieldNames.lastname
-  }), /*#__PURE__*/_react.default.createElement(_core.TextField, {
-    id: fieldNames.lastname,
-    name: fieldNames.lastname,
-    type: fieldNames.lastname,
-    autoComplete: fieldNames.lastname,
-    inputRef: register,
-    label: "Email address",
-    required: true,
-    variant: "outlined",
-    margin: "normal",
-    fullWidth: true
-  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
-    errors: errors,
-    name: fieldNames.email
-  }), /*#__PURE__*/_react.default.createElement(_core.TextField, {
-    id: fieldNames.email,
-    name: fieldNames.email,
-    type: fieldNames.email,
-    autoComplete: fieldNames.email,
-    inputRef: register,
-    label: "Email address",
-    required: true,
-    variant: "outlined",
-    margin: "normal",
-    fullWidth: true
-  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
-    errors: errors,
-    name: fieldNames.email
-  }), /*#__PURE__*/_react.default.createElement(_core.TextField, {
-    id: fieldNames.password,
-    name: fieldNames.password,
-    type: fieldNames.password,
-    autoComplete: "current-password",
-    inputRef: register,
-    label: "Password",
-    required: true,
-    variant: "outlined",
-    margin: "normal",
-    fullWidth: true
-  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.default, {
-    errors: errors,
-    name: fieldNames.password
+  }, /*#__PURE__*/_react.default.createElement(_Input.default, {
+    type: "firstname",
+    register: register,
+    autofocus: true
+  }), /*#__PURE__*/_react.default.createElement(_Input.default, {
+    type: "lastname",
+    register: register
+  }), /*#__PURE__*/_react.default.createElement(_Input.default, {
+    type: "email",
+    register: register
+  }), /*#__PURE__*/_react.default.createElement(_Input.default, {
+    type: "password",
+    register: register
   }), /*#__PURE__*/_react.default.createElement(_core.Button, {
     type: "submit",
     variant: "contained",
@@ -438,7 +379,7 @@ const RegisterForm = () => {
 
 exports.RegisterForm = RegisterForm;
 
-__signature__(RegisterForm, "useStyles{classes}\nuseHistory{history}\nuseRegisterMutation{[createUser, { loading, error }]}\nuseForm{{ register, errors, control, handleSubmit }}\nuseEffect{}\nuseEffect{}", () => [useStyles, _reactRouterDom.useHistory, _graphql.useRegisterMutation, _reactHookForm.useForm]);
+__signature__(RegisterForm, "useStyles{classes}\nuseHistory{history}\nuseRegisterMutation{[createUser, { loading, error }]}\nuseForm{{ register, errors, control, handleSubmit }}\nuseEffect{}", () => [useStyles, _reactRouterDom.useHistory, _graphql.useRegisterMutation, _reactHookForm.useForm]);
 
 ;
 
@@ -451,7 +392,6 @@ __signature__(RegisterForm, "useStyles{classes}\nuseHistory{history}\nuseRegiste
 
   reactHotLoader.register(__awaiter, "__awaiter", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/RegisterForm.tsx");
   reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/RegisterForm.tsx");
-  reactHotLoader.register(fieldNames, "fieldNames", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/RegisterForm.tsx");
   reactHotLoader.register(RegisterForm, "RegisterForm", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/User/components/RegisterForm.tsx");
 })();
 
@@ -461,7 +401,7 @@ __signature__(RegisterForm, "useStyles{classes}\nuseHistory{history}\nuseRegiste
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/AccountCircleOutlined":"../node_modules/@material-ui/icons/AccountCircleOutlined.js","antd":"../node_modules/antd/es/index.js","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/register":"modules/User/validations/register.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx","../../../config/graphql":"config/graphql.tsx"}],"modules/User/pages/Register.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/AccountCircleOutlined":"../node_modules/@material-ui/icons/AccountCircleOutlined.js","./Input":"modules/User/components/Input.tsx","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/register":"modules/User/validations/register.tsx","../../../config/graphql":"config/graphql.tsx"}],"modules/User/pages/Register.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -566,7 +506,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38571" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46747" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

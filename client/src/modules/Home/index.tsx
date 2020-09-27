@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { getAuthToken } from "../../config/authToken";
-import { useUserQuery } from "../../config/graphql";
-import { ROUTES } from "../../config/routes";
-import Login from "../User/pages/Login";
+import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 const Home = () => {
+  const alert = useAlert();
+  const sponge = useEffect(() => {
+    alert.show("Dog");
+  });
   return (
     <div>
-      Hello, Cocksucker.
-      <Login />
+      Hello, Cocksucker.<br></br>
+      <Link to="/register">Register</Link>
+      <br></br>
+      <Link to="/login">Log in</Link>
     </div>
   );
 };
