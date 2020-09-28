@@ -168,7 +168,7 @@ exports.fieldNames = fieldNames;
 })(fieldNames || (exports.fieldNames = fieldNames = {}));
 
 const validationSchema = yup.object().shape({
-  [fieldNames.email]: yup.string().email().min(6).max(30).required().label("Email address"),
+  [fieldNames.email]: yup.string().email().min(6).max(30).required().label("This field"),
   [fieldNames.password]: yup.string().min(8).max(30).required().label("Password")
 });
 exports.validationSchema = validationSchema;
@@ -272,8 +272,7 @@ const useAuthToken = () => {
   const setAuthCookie = token => {
     localStorage.setItem(_variables.LOCAL_STORAGE.token, token);
 
-    _jsCookie.default.set("jwttoken", token); // Cookie.set("jwttoken", token { secure: true });
-
+    _jsCookie.default.set("jwttoken", token);
 
     history.push(_routes.ROUTES.dashboard);
   };
@@ -314,7 +313,557 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes":"config/routes.tsx","../../../config/constants/variables":"config/constants/variables.tsx"}],"modules/User/components/LoginForm.tsx":[function(require,module,exports) {
+},{"@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes":"config/routes.tsx","../../../config/constants/variables":"config/constants/variables.tsx"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/SuccessOutlined.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _utils = require("@material-ui/core/utils");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+/**
+ * @ignore - internal component.
+ */
+var _default = (0, _utils.createSvgIcon)( /*#__PURE__*/React.createElement("path", {
+  d: "M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+}), 'SuccessOutlined');
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core/utils":"../node_modules/@material-ui/core/esm/utils/index.js"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/ReportProblemOutlined.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _utils = require("@material-ui/core/utils");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+/**
+ * @ignore - internal component.
+ */
+var _default = (0, _utils.createSvgIcon)( /*#__PURE__*/React.createElement("path", {
+  d: "M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
+}), 'ReportProblemOutlined');
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core/utils":"../node_modules/@material-ui/core/esm/utils/index.js"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/ErrorOutline.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _utils = require("@material-ui/core/utils");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+/**
+ * @ignore - internal component.
+ */
+var _default = (0, _utils.createSvgIcon)( /*#__PURE__*/React.createElement("path", {
+  d: "M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+}), 'ErrorOutline');
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core/utils":"../node_modules/@material-ui/core/esm/utils/index.js"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/InfoOutlined.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _utils = require("@material-ui/core/utils");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+/**
+ * @ignore - internal component.
+ */
+var _default = (0, _utils.createSvgIcon)( /*#__PURE__*/React.createElement("path", {
+  d: "M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+}), 'InfoOutlined');
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core/utils":"../node_modules/@material-ui/core/esm/utils/index.js"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/Close.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _utils = require("@material-ui/core/utils");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+/**
+ * @ignore - internal component.
+ */
+var _default = (0, _utils.createSvgIcon)( /*#__PURE__*/React.createElement("path", {
+  d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+}), 'Close');
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core/utils":"../node_modules/@material-ui/core/esm/utils/index.js"}],"../node_modules/@material-ui/lab/esm/Alert/Alert.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var React = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _styles = require("@material-ui/core/styles");
+
+var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
+
+var _SuccessOutlined = _interopRequireDefault(require("../internal/svg-icons/SuccessOutlined"));
+
+var _ReportProblemOutlined = _interopRequireDefault(require("../internal/svg-icons/ReportProblemOutlined"));
+
+var _ErrorOutline = _interopRequireDefault(require("../internal/svg-icons/ErrorOutline"));
+
+var _InfoOutlined = _interopRequireDefault(require("../internal/svg-icons/InfoOutlined"));
+
+var _Close = _interopRequireDefault(require("../internal/svg-icons/Close"));
+
+var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
+
+var _utils = require("@material-ui/core/utils");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = function styles(theme) {
+  var getColor = theme.palette.type === 'light' ? _styles.darken : _styles.lighten;
+  var getBackgroundColor = theme.palette.type === 'light' ? _styles.lighten : _styles.darken;
+  return {
+    /* Styles applied to the root element. */
+    root: (0, _extends2.default)({}, theme.typography.body2, {
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: 'transparent',
+      display: 'flex',
+      padding: '6px 16px'
+    }),
+
+    /* Styles applied to the root element if `variant="standard"` and `color="success"`. */
+    standardSuccess: {
+      color: getColor(theme.palette.success.main, 0.6),
+      backgroundColor: getBackgroundColor(theme.palette.success.main, 0.9),
+      '& $icon': {
+        color: theme.palette.success.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="standard"` and `color="info"`. */
+    standardInfo: {
+      color: getColor(theme.palette.info.main, 0.6),
+      backgroundColor: getBackgroundColor(theme.palette.info.main, 0.9),
+      '& $icon': {
+        color: theme.palette.info.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="standard"` and `color="warning"`. */
+    standardWarning: {
+      color: getColor(theme.palette.warning.main, 0.6),
+      backgroundColor: getBackgroundColor(theme.palette.warning.main, 0.9),
+      '& $icon': {
+        color: theme.palette.warning.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="standard"` and `color="error"`. */
+    standardError: {
+      color: getColor(theme.palette.error.main, 0.6),
+      backgroundColor: getBackgroundColor(theme.palette.error.main, 0.9),
+      '& $icon': {
+        color: theme.palette.error.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="outlined"` and `color="success"`. */
+    outlinedSuccess: {
+      color: getColor(theme.palette.success.main, 0.6),
+      border: "1px solid ".concat(theme.palette.success.main),
+      '& $icon': {
+        color: theme.palette.success.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="outlined"` and `color="info"`. */
+    outlinedInfo: {
+      color: getColor(theme.palette.info.main, 0.6),
+      border: "1px solid ".concat(theme.palette.info.main),
+      '& $icon': {
+        color: theme.palette.info.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="outlined"` and `color="warning"`. */
+    outlinedWarning: {
+      color: getColor(theme.palette.warning.main, 0.6),
+      border: "1px solid ".concat(theme.palette.warning.main),
+      '& $icon': {
+        color: theme.palette.warning.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="outlined"` and `color="error"`. */
+    outlinedError: {
+      color: getColor(theme.palette.error.main, 0.6),
+      border: "1px solid ".concat(theme.palette.error.main),
+      '& $icon': {
+        color: theme.palette.error.main
+      }
+    },
+
+    /* Styles applied to the root element if `variant="filled"` and `color="success"`. */
+    filledSuccess: {
+      color: '#fff',
+      fontWeight: theme.typography.fontWeightMedium,
+      backgroundColor: theme.palette.success.main
+    },
+
+    /* Styles applied to the root element if `variant="filled"` and `color="info"`. */
+    filledInfo: {
+      color: '#fff',
+      fontWeight: theme.typography.fontWeightMedium,
+      backgroundColor: theme.palette.info.main
+    },
+
+    /* Styles applied to the root element if `variant="filled"` and `color="warning"`. */
+    filledWarning: {
+      color: '#fff',
+      fontWeight: theme.typography.fontWeightMedium,
+      backgroundColor: theme.palette.warning.main
+    },
+
+    /* Styles applied to the root element if `variant="filled"` and `color="error"`. */
+    filledError: {
+      color: '#fff',
+      fontWeight: theme.typography.fontWeightMedium,
+      backgroundColor: theme.palette.error.main
+    },
+
+    /* Styles applied to the icon wrapper element. */
+    icon: {
+      marginRight: 12,
+      padding: '7px 0',
+      display: 'flex',
+      fontSize: 22,
+      opacity: 0.9
+    },
+
+    /* Styles applied to the message wrapper element. */
+    message: {
+      padding: '8px 0'
+    },
+
+    /* Styles applied to the action wrapper element if `action` is provided. */
+    action: {
+      display: 'flex',
+      alignItems: 'center',
+      marginLeft: 'auto',
+      paddingLeft: 16,
+      marginRight: -8
+    }
+  };
+};
+
+exports.styles = styles;
+var defaultIconMapping = {
+  success: /*#__PURE__*/React.createElement(_SuccessOutlined.default, {
+    fontSize: "inherit"
+  }),
+  warning: /*#__PURE__*/React.createElement(_ReportProblemOutlined.default, {
+    fontSize: "inherit"
+  }),
+  error: /*#__PURE__*/React.createElement(_ErrorOutline.default, {
+    fontSize: "inherit"
+  }),
+  info: /*#__PURE__*/React.createElement(_InfoOutlined.default, {
+    fontSize: "inherit"
+  })
+};
+
+var _ref = /*#__PURE__*/React.createElement(_Close.default, {
+  fontSize: "small"
+});
+
+var Alert = /*#__PURE__*/React.forwardRef(function Alert(props, ref) {
+  var action = props.action,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$closeText = props.closeText,
+      closeText = _props$closeText === void 0 ? 'Close' : _props$closeText,
+      color = props.color,
+      icon = props.icon,
+      _props$iconMapping = props.iconMapping,
+      iconMapping = _props$iconMapping === void 0 ? defaultIconMapping : _props$iconMapping,
+      onClose = props.onClose,
+      _props$role = props.role,
+      role = _props$role === void 0 ? 'alert' : _props$role,
+      _props$severity = props.severity,
+      severity = _props$severity === void 0 ? 'success' : _props$severity,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'standard' : _props$variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["action", "children", "classes", "className", "closeText", "color", "icon", "iconMapping", "onClose", "role", "severity", "variant"]);
+  return /*#__PURE__*/React.createElement(_Paper.default, (0, _extends2.default)({
+    role: role,
+    square: true,
+    elevation: 0,
+    className: (0, _clsx.default)(classes.root, classes["".concat(variant).concat((0, _utils.capitalize)(color || severity))], className),
+    ref: ref
+  }, other), icon !== false ? /*#__PURE__*/React.createElement("div", {
+    className: classes.icon
+  }, icon || iconMapping[severity] || defaultIconMapping[severity]) : null, /*#__PURE__*/React.createElement("div", {
+    className: classes.message
+  }, children), action != null ? /*#__PURE__*/React.createElement("div", {
+    className: classes.action
+  }, action) : null, action == null && onClose ? /*#__PURE__*/React.createElement("div", {
+    className: classes.action
+  }, /*#__PURE__*/React.createElement(_IconButton.default, {
+    size: "small",
+    "aria-label": closeText,
+    title: closeText,
+    color: "inherit",
+    onClick: onClose
+  }, _ref)) : null);
+});
+"development" !== "production" ? Alert.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * The action to display. It renders after the message, at the end of the alert.
+   */
+  action: _propTypes.default.node,
+
+  /**
+   * The content of the component.
+   */
+  children: _propTypes.default.node,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: _propTypes.default.object,
+
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * Override the default label for the *close popup* icon button.
+   *
+   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   */
+  closeText: _propTypes.default.string,
+
+  /**
+   * The main color for the alert. Unless provided, the value is taken from the `severity` prop.
+   */
+  color: _propTypes.default.oneOf(['error', 'info', 'success', 'warning']),
+
+  /**
+   * Override the icon displayed before the children.
+   * Unless provided, the icon is mapped to the value of the `severity` prop.
+   */
+  icon: _propTypes.default.node,
+
+  /**
+   * The component maps the `severity` prop to a range of different icons,
+   * for instance success to `<SuccessOutlined>`.
+   * If you wish to change this mapping, you can provide your own.
+   * Alternatively, you can use the `icon` prop to override the icon displayed.
+   */
+  iconMapping: _propTypes.default.shape({
+    error: _propTypes.default.node,
+    info: _propTypes.default.node,
+    success: _propTypes.default.node,
+    warning: _propTypes.default.node
+  }),
+
+  /**
+   * Callback fired when the component requests to be closed.
+   * When provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.
+   *
+   * @param {object} event The event source of the callback.
+   */
+  onClose: _propTypes.default.func,
+
+  /**
+   * The ARIA role attribute of the element.
+   */
+  role: _propTypes.default.string,
+
+  /**
+   * The severity of the alert. This defines the color and icon used.
+   */
+  severity: _propTypes.default.oneOf(['error', 'info', 'success', 'warning']),
+
+  /**
+   * The variant to use.
+   */
+  variant: _propTypes.default.oneOf(['filled', 'outlined', 'standard'])
+} : void 0;
+
+var _default = (0, _styles.withStyles)(styles, {
+  name: 'MuiAlert'
+})(Alert);
+
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"../node_modules/@material-ui/core/esm/Paper/index.js","../internal/svg-icons/SuccessOutlined":"../node_modules/@material-ui/lab/esm/internal/svg-icons/SuccessOutlined.js","../internal/svg-icons/ReportProblemOutlined":"../node_modules/@material-ui/lab/esm/internal/svg-icons/ReportProblemOutlined.js","../internal/svg-icons/ErrorOutline":"../node_modules/@material-ui/lab/esm/internal/svg-icons/ErrorOutline.js","../internal/svg-icons/InfoOutlined":"../node_modules/@material-ui/lab/esm/internal/svg-icons/InfoOutlined.js","../internal/svg-icons/Close":"../node_modules/@material-ui/lab/esm/internal/svg-icons/Close.js","@material-ui/core/IconButton":"../node_modules/@material-ui/core/esm/IconButton/index.js","@material-ui/core/utils":"../node_modules/@material-ui/core/esm/utils/index.js"}],"../node_modules/@material-ui/lab/esm/Alert/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _Alert.default;
+  }
+});
+
+var _Alert = _interopRequireDefault(require("./Alert"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./Alert":"../node_modules/@material-ui/lab/esm/Alert/Alert.js"}],"components/ErrorMessage.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ErrorMessage = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _core = require("@material-ui/core");
+
+var _Alert = _interopRequireDefault(require("@material-ui/lab/Alert"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+const ErrorMessage = ({
+  errors,
+  type
+}) => {
+  const [open, setOpen] = _react.default.useState(true);
+
+  (0, _react.useEffect)(() => {
+    if (errors[type]) {
+      setOpen(true);
+    }
+  });
+  (0, _react.useEffect)(() => {
+    if (!errors[type]) {
+      setOpen(false);
+    }
+  });
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  if (!errors[type]) return null;
+  return /*#__PURE__*/_react.default.createElement(_core.Snackbar, {
+    open: open,
+    autoHideDuration: 2000,
+    onClose: handleClose
+  }, /*#__PURE__*/_react.default.createElement(_Alert.default, {
+    onClose: handleClose,
+    severity: "error"
+  }, errors[type].message));
+};
+
+exports.ErrorMessage = ErrorMessage;
+
+__signature__(ErrorMessage, "useState{[open, setOpen](true)}\nuseEffect{}\nuseEffect{}");
+
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(ErrorMessage, "ErrorMessage", "/home/paul/Public/dev/tsgrad-mui/client/src/components/ErrorMessage.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"react":"../node_modules/react/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/lab/Alert":"../node_modules/@material-ui/lab/esm/Alert/index.js"}],"modules/User/components/LoginForm.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -341,6 +890,8 @@ var _login = require("../validations/login");
 var _graphql = require("../../../config/graphql");
 
 var _useAuthToken = _interopRequireDefault(require("../hooks/useAuthToken"));
+
+var _ErrorMessage = require("../../../components/ErrorMessage");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -414,9 +965,7 @@ const useStyles = (0, _styles.makeStyles)(({
 
 const LoginForm = () => {
   const classes = useStyles();
-  const [login, {
-    data
-  }] = (0, _graphql.useLoginMutation)();
+  const [login] = (0, _graphql.useLoginMutation)();
   const {
     register,
     handleSubmit,
@@ -443,8 +992,6 @@ const LoginForm = () => {
         password
       }
     });
-    console.log(response);
-    console.log("Form submitted");
 
     if (response && response.data) {
       const jwt = (_a = response.data.tokenAuth) === null || _a === void 0 ? void 0 : _a.token;
@@ -468,9 +1015,15 @@ const LoginForm = () => {
     type: _login.fieldNames.email,
     register: register,
     autofocus: true
+  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.ErrorMessage, {
+    errors: errors,
+    type: _login.fieldNames.email
   }), /*#__PURE__*/_react.default.createElement(_Input.default, {
     type: _login.fieldNames.password,
     register: register
+  }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.ErrorMessage, {
+    errors: errors,
+    type: _login.fieldNames.password
   }), /*#__PURE__*/_react.default.createElement(_core.FormControlLabel, {
     control: /*#__PURE__*/_react.default.createElement(_reactHookForm.Controller, {
       as: _core.Checkbox,
@@ -505,7 +1058,7 @@ const LoginForm = () => {
   }, "Don't have an account? Sign up")))));
 };
 
-__signature__(LoginForm, "useStyles{classes}\nuseLoginMutation{[login, { data }]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}", () => [useStyles, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default]);
+__signature__(LoginForm, "useStyles{classes}\nuseLoginMutation{[login]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}", () => [useStyles, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default]);
 
 const _default = LoginForm;
 var _default2 = _default;
@@ -531,7 +1084,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/LockOutlined":"../node_modules/@material-ui/icons/LockOutlined.js","./Input":"modules/User/components/Input.tsx","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/login":"modules/User/validations/login.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/LockOutlined":"../node_modules/@material-ui/icons/LockOutlined.js","./Input":"modules/User/components/Input.tsx","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/login":"modules/User/validations/login.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -539,17 +1092,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
 
 var _styles = require("@material-ui/core/styles");
 
 var _core = require("@material-ui/core");
 
+var _checkAuth = _interopRequireDefault(require("../hooks/checkAuth"));
+
 var _LoginForm = _interopRequireDefault(require("../components/LoginForm"));
 
 var _Footer = require("../../../components/Footer");
 
+var _routes = require("../../../config/routes");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -574,6 +1137,14 @@ const useStyles = (0, _styles.makeStyles)(({
 
 const Login = () => {
   const classes = useStyles();
+  const loggedIn = (0, _checkAuth.default)();
+  const history = (0, _reactRouterDom.useHistory)();
+  (0, _react.useEffect)(() => {
+    if (loggedIn) {
+      console.log("Logged in:" + loggedIn);
+      history.push(_routes.ROUTES.dashboard);
+    }
+  }, []);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Container, {
     component: "main",
     maxWidth: "xs"
@@ -583,7 +1154,7 @@ const Login = () => {
   }, /*#__PURE__*/_react.default.createElement(_LoginForm.default, null))), /*#__PURE__*/_react.default.createElement(_Footer.Footer, null));
 };
 
-__signature__(Login, "useStyles{classes}", () => [useStyles]);
+__signature__(Login, "useStyles{classes}\nuseHistory{history}\nuseEffect{}", () => [useStyles, _reactRouterDom.useHistory]);
 
 const _default = Login;
 var _default2 = _default;
@@ -608,7 +1179,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../components/LoginForm":"modules/User/components/LoginForm.tsx","../../../components/Footer":"components/Footer.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../hooks/checkAuth":"modules/User/hooks/checkAuth.tsx","../components/LoginForm":"modules/User/components/LoginForm.tsx","../../../components/Footer":"components/Footer.tsx","../../../config/routes":"config/routes.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -636,7 +1207,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46747" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42323" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

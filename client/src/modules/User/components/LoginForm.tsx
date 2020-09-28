@@ -13,6 +13,8 @@ import {
   Typography,
   Zoom,
 } from "@material-ui/core";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input";
 import { useForm, Controller } from "react-hook-form";
@@ -48,7 +50,7 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
 
 const LoginForm = () => {
   const classes = useStyles();
-  const [login, { data }] = useLoginMutation();
+  const [login] = useLoginMutation();
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
@@ -64,8 +66,6 @@ const LoginForm = () => {
       },
     });
 
-    console.log(response);
-    console.log("Form submitted");
     if (response && response.data) {
       const jwt = response.data.tokenAuth?.token;
       if (jwt) {
@@ -82,13 +82,17 @@ const LoginForm = () => {
       <Typography component="h1" variant="h5">
         Sign in
       </Typography>
+
       <form
         className={classes.form}
         noValidate
         onSubmit={handleSubmit(onFormSubmit)}
       >
         <Input type={fieldNames.email} register={register} autofocus />
+        <ErrorMessage errors={errors} type={fieldNames.email} />
         <Input type={fieldNames.password} register={register} />
+        <ErrorMessage errors={errors} type={fieldNames.password} />
+
         <FormControlLabel
           control={
             <Controller

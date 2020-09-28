@@ -1,9 +1,10 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { GlobalStyle } from "../styles/global";
 import { ROUTES } from "../config/routes";
 import PrivateRoute from "./PrivateRoute";
-import FullPageLoader from "./FullPageLoader";
+import { Page } from "./Page";
+import { Header } from "./Header";
 
 const Home = React.lazy(() => import("../modules/Home"));
 const Register = React.lazy(() => import("../modules/User/pages/Register"));
@@ -12,26 +13,27 @@ const Dashboard = React.lazy(() => import("../modules/Dashboard"));
 
 const App: React.FC = () => {
   return (
-    <Suspense fallback={<FullPageLoader />}>
-      <Switch>
-        <Route exact path={ROUTES.home}>
-          <Home />
-        </Route>
-        <Route exact path={ROUTES.register}>
-          <Register />
-        </Route>
-        <Route exact path={ROUTES.login}>
-          <Login />
-        </Route>
-        <PrivateRoute exact path={ROUTES.dashboard}>
-          <Dashboard />
-        </PrivateRoute>
-      </Switch>
+    <Suspense fallback="Loading...">
+      <Page>
+        <Header />
+        <Switch>
+          <Route exact path={ROUTES.home}>
+            <Home />
+          </Route>
+          <Route exact path={ROUTES.register}>
+            <Register />
+          </Route>
+          <Route exact path={ROUTES.login}>
+            <Login />
+          </Route>
+          <PrivateRoute exact path={ROUTES.dashboard}>
+            <Dashboard />
+          </PrivateRoute>
+        </Switch>
+      </Page>
       <GlobalStyle />
     </Suspense>
   );
 };
 
 export default App;
-
-// {auth ? <Redirect to="/dashboard" /> : <Home />}

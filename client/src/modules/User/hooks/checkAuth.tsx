@@ -1,17 +1,16 @@
 import React from "react";
+import { useApolloClient } from "@apollo/client";
 import Cookie from "js-cookie";
-import { useVerifyTokenMutation } from "../../../config/graphql";
-import { LOCAL_STORAGE } from "../../../config/constants/variables";
+import { useUserQuery } from "../../../config/graphql";
 
 const checkAuth = () => {
-  const token = localStorage.getItem(LOCAL_STORAGE.token);
-  const [verifyToken, { loading, error, data }] = useVerifyTokenMutation();
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error || !data) {
-    return <div>Error...</div>;
-  }
+  const loggedIn = Boolean(Cookie.get("jwttoken"));
+  const { data, error } = useUserQuery();
 
-  console.log(data);
+  if (error || !loggedIn || !data?.user) {
+    return false;
+  }
+  return true;
 };
+
+export default checkAuth;

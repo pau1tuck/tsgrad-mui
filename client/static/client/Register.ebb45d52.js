@@ -409,17 +409,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
 
 var _styles = require("@material-ui/core/styles");
 
 var _core = require("@material-ui/core");
+
+var _checkAuth = _interopRequireDefault(require("../hooks/checkAuth"));
+
+var _routes = require("../../../config/routes");
 
 var _RegisterForm = require("../components/RegisterForm");
 
 var _Footer = require("../../../components/Footer");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -444,6 +454,14 @@ const useStyles = (0, _styles.makeStyles)(({
 
 const Register = () => {
   const classes = useStyles();
+  const loggedIn = (0, _checkAuth.default)();
+  const history = (0, _reactRouterDom.useHistory)();
+  (0, _react.useEffect)(() => {
+    if (loggedIn) {
+      console.log("Logged in:" + loggedIn);
+      history.push(_routes.ROUTES.dashboard);
+    }
+  }, []);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Container, {
     component: "main",
     maxWidth: "xs"
@@ -453,7 +471,7 @@ const Register = () => {
   }, /*#__PURE__*/_react.default.createElement(_RegisterForm.RegisterForm, null))), /*#__PURE__*/_react.default.createElement(_Footer.Footer, null));
 };
 
-__signature__(Register, "useStyles{classes}", () => [useStyles]);
+__signature__(Register, "useStyles{classes}\nuseHistory{history}\nuseEffect{}", () => [useStyles, _reactRouterDom.useHistory]);
 
 const _default = Register;
 var _default2 = _default;
@@ -478,7 +496,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../components/RegisterForm":"modules/User/components/RegisterForm.tsx","../../../components/Footer":"components/Footer.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../hooks/checkAuth":"modules/User/hooks/checkAuth.tsx","../../../config/routes":"config/routes.tsx","../components/RegisterForm":"modules/User/components/RegisterForm.tsx","../../../components/Footer":"components/Footer.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -506,7 +524,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46747" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42323" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

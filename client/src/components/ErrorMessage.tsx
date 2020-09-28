@@ -1,20 +1,39 @@
 import React, { useEffect } from "react";
-import { useAlert } from "react-alert";
+import { Snackbar } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 
-interface IErrorMessage {
+interface iErrorMessage {
   errors: any;
-  name: string;
+  type: string;
 }
 
-const showAlert = useEffect(() => {
-  const alert = useAlert();
-  alert.show("Shite.");
-});
+export const ErrorMessage = ({ errors, type }: iErrorMessage) => {
+  const [open, setOpen] = React.useState(true);
 
-export const ErrorMessage = ({ errors, name }: IErrorMessage) => {
-  // Note: if you are using FormContext, then you can use Errors without props eg:
-  // const { errors } = useFormContext();
-  if (!errors[name]) return null;
+  useEffect(() => {
+    if (errors[type]) {
+      setOpen(true);
+    }
+  });
+  useEffect(() => {
+    if (!errors[type]) {
+      setOpen(false);
+    }
+  });
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
-  return <div>.</div>;
+  if (!errors[type]) return null;
+
+  return (
+    <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="error">
+        {errors[type].message}
+      </Alert>
+    </Snackbar>
+  );
 };

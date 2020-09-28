@@ -3,7 +3,7 @@ import { transitions, positions } from "react-alert";
 
 export const options = {
   // you can also just use 'bottom center'
-  position: positions.BOTTOM_CENTER,
+  position: positions.MIDDLE,
   timeout: 5000,
   offset: "30px",
   // you can also just use 'scale'
