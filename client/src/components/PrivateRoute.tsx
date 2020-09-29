@@ -4,6 +4,7 @@ import { Route, useHistory } from "react-router-dom";
 import { ROUTES } from "../config/routes";
 import { useUserQuery } from "../config/graphql";
 import { LOCAL_STORAGE_TEMPLATE } from "../config/authToken";
+import checkAuth from "../modules/User/hooks/checkAuth";
 
 interface IPrivateRoute {
   path: string;
@@ -15,13 +16,14 @@ export const PrivateRoute: React.FC<IPrivateRoute> = ({
   children,
   ...props
 }) => {
+  const auth = checkAuth();
   const history = useHistory();
   /*
   if (!localStorage.getItem(LOCAL_STORAGE_TEMPLATE.token)) {
     history.push(ROUTES.home);
   } */
   useEffect(() => {
-    if (!Cookie.get("jwttoken")) {
+    if (!auth) {
       console.log("Nice try, bastard.");
       history.push(ROUTES.home);
     }

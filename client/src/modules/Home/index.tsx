@@ -4,17 +4,10 @@ import { useAlert } from "react-alert";
 
 const Home = () => {
   const alert = useAlert();
-  const sponge = useEffect(() => {
-    alert.show("Dog");
+  const welcome = useEffect(() => {
+    alert.show("Welcome");
   });
-  return (
-    <div>
-      Hello, Cocksucker.<br></br>
-      <Link to="/register">Register</Link>
-      <br></br>
-      <Link to="/login">Log in</Link>
-    </div>
-  );
+  return <div> </div>;
 };
 
 export default Home;

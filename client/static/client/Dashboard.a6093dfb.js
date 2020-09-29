@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"modules/Dashboard/index.tsx":[function(require,module,exports) {
+})({"modules/Posts/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -126,12 +126,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
-
-var _client = require("@apollo/client");
-
-var _jsCookie = _interopRequireDefault(require("js-cookie"));
-
-var _reactRouterDom = require("react-router-dom");
 
 var _graphql = require("../../config/graphql");
 
@@ -146,42 +140,80 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
   return a;
 };
 
-const Dashboard = () => {
-  var _a, _b, _c, _d;
+const Posts = () => {
+  var _a;
 
   const {
     data,
     error,
     loading
-  } = (0, _graphql.useUserQuery)();
-  const client = (0, _client.useApolloClient)();
-  const history = (0, _reactRouterDom.useHistory)();
-
-  const logout = () => {
-    client.resetStore();
-
-    _jsCookie.default.remove("jwttoken");
-
-    _jsCookie.default.remove("csrftoken");
-
-    localStorage.clear();
-    history.push("/");
-  };
+  } = (0, _graphql.usePostsQuery)();
+  const posts = (_a = data === null || data === void 0 ? void 0 : data.posts) === null || _a === void 0 ? void 0 : _a.map(post => /*#__PURE__*/_react.default.createElement("div", {
+    key: post === null || post === void 0 ? void 0 : post.id
+  }, /*#__PURE__*/_react.default.createElement("h2", null, post === null || post === void 0 ? void 0 : post.title), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.author.firstname, " ", post.author.lastname), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.createdAt), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.content)));
 
   if (loading) {
     return /*#__PURE__*/_react.default.createElement("div", null, "Loading...");
   }
 
   if (error || !data) {
+    console.log(error === null || error === void 0 ? void 0 : error.message);
     return /*#__PURE__*/_react.default.createElement("div", null, "Error...");
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, "Hello, Beast.", console.log(data), /*#__PURE__*/_react.default.createElement("p", null, (_a = data === null || data === void 0 ? void 0 : data.user) === null || _a === void 0 ? void 0 : _a.id), /*#__PURE__*/_react.default.createElement("p", null, (_b = data === null || data === void 0 ? void 0 : data.user) === null || _b === void 0 ? void 0 : _b.firstname), /*#__PURE__*/_react.default.createElement("p", null, (_c = data === null || data === void 0 ? void 0 : data.user) === null || _c === void 0 ? void 0 : _c.lastname), /*#__PURE__*/_react.default.createElement("p", null, (_d = data === null || data === void 0 ? void 0 : data.user) === null || _d === void 0 ? void 0 : _d.email), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: logout
-  }, "Log out"));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, posts));
 };
 
-__signature__(Dashboard, "useUserQuery{{ data, error, loading }}\nuseApolloClient{client}\nuseHistory{history}", () => [_graphql.useUserQuery, _client.useApolloClient, _reactRouterDom.useHistory]);
+__signature__(Posts, "usePostsQuery{{ data, error, loading }}", () => [_graphql.usePostsQuery]);
+
+const _default = Posts;
+var _default2 = _default;
+exports.default = _default2;
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(Posts, "Posts", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/Posts/index.tsx");
+  reactHotLoader.register(_default, "default", "/home/paul/Public/dev/tsgrad-mui/client/src/modules/Posts/index.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"react":"../node_modules/react/index.js","../../config/graphql":"config/graphql.tsx"}],"modules/Dashboard/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Posts = _interopRequireDefault(require("../Posts"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+const Dashboard = () => {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Posts.default, null));
+};
 
 const _default = Dashboard;
 var _default2 = _default;
@@ -205,7 +237,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../config/graphql":"config/graphql.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Posts":"modules/Posts/index.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -233,7 +265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42323" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39985" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,7 @@
+import React from "react";
 import { useApolloClient } from "@apollo/client";
 import Cookie from "js-cookie";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { ROUTES } from "../../../config/routes";
 import { LOCAL_STORAGE } from "../../../config/constants/variables";
 
@@ -18,7 +19,7 @@ const useAuthToken = () => {
   const logout = () => {
     client.resetStore();
     localStorage.clear();
-    history.push("/");
+    <Redirect to="/home" />;
   };
 
   return { setAuthCookie, logout };

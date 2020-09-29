@@ -14,8 +14,8 @@ const Dashboard = React.lazy(() => import("../modules/Dashboard"));
 const App: React.FC = () => {
   return (
     <Suspense fallback="Loading...">
+      <Header />
       <Page>
-        <Header />
         <Switch>
           <Route exact path={ROUTES.home}>
             <Home />

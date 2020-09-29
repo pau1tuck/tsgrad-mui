@@ -127,8 +127,6 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
 var _reactAlert = require("react-alert");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -146,17 +144,13 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 const Home = () => {
   const alert = (0, _reactAlert.useAlert)();
-  const sponge = (0, _react.useEffect)(() => {
-    alert.show("Dog");
+  const welcome = (0, _react.useEffect)(() => {
+    alert.show("Welcome");
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, "Hello, Cocksucker.", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/register"
-  }, "Register"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/login"
-  }, "Log in"));
+  return /*#__PURE__*/_react.default.createElement("div", null, " ");
 };
 
-__signature__(Home, "useAlert{alert}\nuseEffect{sponge}", () => [_reactAlert.useAlert]);
+__signature__(Home, "useAlert{alert}\nuseEffect{welcome}", () => [_reactAlert.useAlert]);
 
 const _default = Home;
 var _default2 = _default;
@@ -180,7 +174,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-alert":"../node_modules/react-alert/dist/esm/react-alert.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-alert":"../node_modules/react-alert/dist/esm/react-alert.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -208,7 +202,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42323" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39985" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

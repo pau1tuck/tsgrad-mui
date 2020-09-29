@@ -25,7 +25,7 @@ export const Page: React.FC = ({ children }) => {
   return (
     <main className={classes.page}>
       <div className={classes.navbarSpacer} />
-      <Container className={classes.content} maxWidth="lg">
+      <Container className={classes.content} maxWidth="md">
         <Grid container direction="row" justify="center" alignItems="center">
           <Link
             href="https://github.com/pau1tuck/tsgrad-mui"

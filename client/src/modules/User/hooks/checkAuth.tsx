@@ -5,11 +5,12 @@ import { useUserQuery } from "../../../config/graphql";
 
 const checkAuth = () => {
   const loggedIn = Boolean(Cookie.get("jwttoken"));
-  const { data, error } = useUserQuery();
 
-  if (error || !loggedIn || !data?.user) {
+  if (!loggedIn) {
+    console.log("Logged in? = false");
     return false;
   }
+  console.log("Logged in? = true");
   return true;
 };
 
