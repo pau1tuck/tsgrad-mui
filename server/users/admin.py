@@ -15,17 +15,17 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ('created_at', 'last_visit')
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Details', {'fields': ('firstname', 'lastname', 'avatar')}),
-        (None, {'fields': ('username', 'is_staff', 'is_superuser')}),
+        ('Details', {'fields': ('first_name', 'last_name', 'avatar')}),
+        (None, {'fields': ('username', 'is_staff', 'is_superuser', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('firstname', 'lastname', 'email', 'password')}
+            'fields': ('first_name', 'last_name', 'email', 'password')}
          ),
     )
     search_fields = ('email',)
-    ordering = ('firstname', 'lastname')
+    ordering = ('first_name', 'last_name')
 
 
 admin.site.register(CustomUser)

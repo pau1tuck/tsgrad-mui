@@ -1,7 +1,7 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
 import Cookie from "js-cookie";
-import { useUserQuery } from "../../../config/graphql";
+import { useMeQuery } from "../../../config/graphql";
 
 const checkAuth = () => {
   const loggedIn = Boolean(Cookie.get("jwttoken"));

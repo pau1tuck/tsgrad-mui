@@ -58,13 +58,13 @@ export const RegisterForm: React.FC = () => {
   });
 
   const onFormSubmit = async (values: any) => {
-    const { firstname, lastname, email, password } = values;
+    const { firstName, lastName, email, password1 } = values;
     const response = await createUser({
       variables: {
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         email,
-        password,
+        password1,
       },
     });
 
@@ -86,8 +86,8 @@ export const RegisterForm: React.FC = () => {
         noValidate
         onSubmit={handleSubmit(onFormSubmit)}
       >
-        <Input type="firstname" register={register} autofocus />
-        <Input type="lastname" register={register} />
+        <Input type="firstName" register={register} autofocus />
+        <Input type="lastName" register={register} />
         <Input type="email" register={register} />
         <Input type="password" register={register} />
         <Button

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import {
@@ -23,6 +23,7 @@ import { useLoginMutation } from "../../../config/graphql";
 import useAuthToken from "../hooks/useAuthToken";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import { useAlert } from "react-alert";
+import { gql, useApolloClient } from "@apollo/client";
 
 const useStyles = makeStyles(({ spacing, palette }: Theme) =>
   createStyles({
@@ -50,12 +51,15 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
 
 const LoginForm = () => {
   const classes = useStyles();
+  const history = useHistory();
   const [login] = useLoginMutation();
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
   });
   const { setAuthCookie } = useAuthToken();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const client = useApolloClient();
 
   const onFormSubmit = async (values: any) => {
     const { email, password } = values;
@@ -67,9 +71,22 @@ const LoginForm = () => {
     });
 
     if (response && response.data) {
-      const jwt = response.data.tokenAuth?.token;
-      if (jwt) {
-        setAuthCookie(jwt);
+      const jwtToken = response.data.login?.token;
+      console.log("Login response: " + response.data);
+      const refreshToken = response.data.login?.refreshToken;
+      if (jwtToken) {
+        setAuthCookie(jwtToken, refreshToken);
+        client.writeFragment({
+          id: "5",
+          fragment: gql`
+            fragment MyTodo on me {
+              completed
+            }
+          `,
+          data: {
+            completed: true,
+          },
+        });
       }
     }
   };
@@ -88,9 +105,9 @@ const LoginForm = () => {
         noValidate
         onSubmit={handleSubmit(onFormSubmit)}
       >
-        <Input type={fieldNames.email} register={register} autofocus />
+        <Input type="email" register={register} autofocus />
         <ErrorMessage errors={errors} type={fieldNames.email} />
-        <Input type={fieldNames.password} register={register} />
+        <Input type="password" register={register} />
         <ErrorMessage errors={errors} type={fieldNames.password} />
 
         <FormControlLabel

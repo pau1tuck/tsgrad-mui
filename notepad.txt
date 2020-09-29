@@ -1,0 +1,15 @@
+mutation {
+  login(email: "pdrt888@gmail.com", password: "paultuck") {
+    token
+    refreshToken
+  }
+}
+
+{
+  me {
+    id
+    firstName
+    lastName
+    email
+  }
+}

@@ -11,11 +11,11 @@ const Input = ({ type, register, autofocus }: iInput) => {
   let label: string = "";
   let autocomplete: string = "";
   switch (type) {
-    case "firstname":
+    case "firstName":
       label = "First name";
       autocomplete = "given-name";
       break;
-    case "lastname":
+    case "lastName":
       label = "Last name";
       autocomplete = "family-name";
       break;

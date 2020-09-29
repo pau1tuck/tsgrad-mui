@@ -14,23 +14,20 @@ const Dashboard = React.lazy(() => import("../modules/Dashboard"));
 const App: React.FC = () => {
   return (
     <Suspense fallback="Loading...">
-      <Header />
-      <Page>
-        <Switch>
-          <Route exact path={ROUTES.home}>
-            <Home />
-          </Route>
-          <Route exact path={ROUTES.register}>
-            <Register />
-          </Route>
-          <Route exact path={ROUTES.login}>
-            <Login />
-          </Route>
-          <PrivateRoute exact path={ROUTES.dashboard}>
-            <Dashboard />
-          </PrivateRoute>
-        </Switch>
-      </Page>
+      <Switch>
+        <Route exact path={ROUTES.home}>
+          <Home />
+        </Route>
+        <Route exact path={ROUTES.register}>
+          <Register />
+        </Route>
+        <Route exact path={ROUTES.login}>
+          <Login />
+        </Route>
+        <PrivateRoute exact path={ROUTES.dashboard}>
+          <Dashboard />
+        </PrivateRoute>
+      </Switch>
       <GlobalStyle />
     </Suspense>
   );

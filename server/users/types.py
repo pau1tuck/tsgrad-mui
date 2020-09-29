@@ -14,7 +14,7 @@ class UserType(CountableDjangoObjectType):
             "created_at",
             "last_visit",
             "email",
-            "firstname",
-            "lastname",
+            "first_name",
+            "last_name",
             "is_staff",
         ]

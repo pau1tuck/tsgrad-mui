@@ -1,6 +1,30 @@
 from django.contrib.auth import get_user_model
 import graphene
 from graphene_django import DjangoObjectType
+import graphql_jwt
+from graphql_auth import mutations
+
+
+class AuthMutation(graphene.ObjectType):
+    register = mutations.Register.Field()
+    verify_account = mutations.VerifyAccount.Field()
+    resend_activation_email = mutations.ResendActivationEmail.Field()
+    send_password_reset_email = mutations.SendPasswordResetEmail.Field()
+    password_reset = mutations.PasswordReset.Field()
+    password_change = mutations.PasswordChange.Field()
+    update_account = mutations.UpdateAccount.Field()
+    archive_account = mutations.ArchiveAccount.Field()
+    delete_account = mutations.DeleteAccount.Field()
+    send_secondary_email_activation = mutations.SendSecondaryEmailActivation.Field()
+    verify_secondary_email = mutations.VerifySecondaryEmail.Field()
+    swap_emails = mutations.SwapEmails.Field()
+    remove_secondary_email = mutations.RemoveSecondaryEmail.Field()
+
+    # django-graphql-jwt inheritances
+    token_auth = mutations.ObtainJSONWebToken.Field()
+    verify_token = mutations.VerifyToken.Field()
+    refresh_token = mutations.RefreshToken.Field()
+    revoke_token = mutations.RevokeToken.Field()
 
 
 class UserType(DjangoObjectType):
@@ -8,19 +32,45 @@ class UserType(DjangoObjectType):
         model = get_user_model()
 
 
+class ObtainJWToken(graphql_jwt.JSONWebTokenMutation):
+    user = graphene.Field(UserType)
+
+    @classmethod
+    def resolve(cls, root, info, **kwargs):
+        return cls(user=info.context.user)
+
+
+class UserQuery(graphene.ObjectType):
+    users = graphene.List(UserType)
+
+    def resolve_users(self, info):
+        return get_user_model().objects.all()
+
+
+class MeQuery(graphene.ObjectType):
+    me = graphene.Field(UserType)
+
+    def resolve_user(self, info):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception('User not authenticated')
+
+        return user
+
+
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)
 
     class Arguments:
-        firstname = graphene.String(required=True)
-        lastname = graphene.String(required=True)
+        first_name = graphene.String(required=True)
+        last_name = graphene.String(required=True)
         email = graphene.String(required=True)
         password = graphene.String(required=True)
 
-    def mutate(self, info, firstname, lastname, email, password):
+    def mutate(self, info, first_name, last_name, email, password):
         user = get_user_model()(
-            firstname=firstname,
-            lastname=lastname,
+            first_name=first_name,
+            last_name=last_name,
             email=email,
         )
         user.set_password(password)
@@ -30,19 +80,5 @@ class CreateUser(graphene.Mutation):
 
 
 class Mutation(graphene.ObjectType):
-    create_user = CreateUser.Field()
-
-
-class Query(graphene.ObjectType):
-    users = graphene.List(UserType)
-    user = graphene.Field(UserType)
-
-    def resolve_users(self, info):
-        return get_user_model().objects.all()
-
-    def resolve_user(self, info):
-        user = info.context.user
-        if user.is_anonymous:
-            raise Exception('User not authenticated')
-
-        return user
+    login = ObtainJWToken.Field()
+    #create_user = CreateUser.Field()

@@ -39438,7 +39438,7 @@ exports.ObservableQuery = ObservableQuery;
 function defaultSubscriptionObserverErrorCallback(error) {
   "development" === "production" || _tsInvariant.invariant.error('Unhandled error', error.message, error.stack);
 }
-},{"tslib":"../node_modules/tslib/tslib.es6.js","ts-invariant":"../node_modules/ts-invariant/lib/invariant.esm.js","@wry/equality":"../node_modules/@apollo/client/node_modules/@wry/equality/lib/equality.esm.js","./networkStatus.js":"../node_modules/@apollo/client/core/networkStatus.js","../utilities/index.js":"../node_modules/@apollo/client/utilities/index.js","./Reobserver.js":"../node_modules/@apollo/client/core/Reobserver.js"}],"../node_modules/@wry/context/lib/context.esm.js":[function(require,module,exports) {
+},{"tslib":"../node_modules/tslib/tslib.es6.js","ts-invariant":"../node_modules/ts-invariant/lib/invariant.esm.js","@wry/equality":"../node_modules/@apollo/client/node_modules/@wry/equality/lib/equality.esm.js","./networkStatus.js":"../node_modules/@apollo/client/core/networkStatus.js","../utilities/index.js":"../node_modules/@apollo/client/utilities/index.js","./Reobserver.js":"../node_modules/@apollo/client/core/Reobserver.js"}],"../node_modules/@apollo/client/node_modules/@wry/context/lib/context.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40366,7 +40366,7 @@ function wrap(originalFunction, options) {
 
   return optimistic;
 }
-},{"@wry/context":"../node_modules/@wry/context/lib/context.esm.js"}],"../node_modules/@apollo/client/cache/core/cache.js":[function(require,module,exports) {
+},{"@wry/context":"../node_modules/@apollo/client/node_modules/@wry/context/lib/context.esm.js"}],"../node_modules/@apollo/client/cache/core/cache.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41643,7 +41643,7 @@ function broadcast(cache) {
     cache.broadcastWatches();
   }
 }
-},{"@wry/context":"../node_modules/@wry/context/lib/context.esm.js","optimism":"../node_modules/@apollo/client/node_modules/optimism/lib/bundle.esm.js"}],"../node_modules/@apollo/client/cache/inmemory/policies.js":[function(require,module,exports) {
+},{"@wry/context":"../node_modules/@apollo/client/node_modules/@wry/context/lib/context.esm.js","optimism":"../node_modules/@apollo/client/node_modules/optimism/lib/bundle.esm.js"}],"../node_modules/@apollo/client/cache/inmemory/policies.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -105243,437 +105243,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../config/routes":"config/routes.tsx","../modules/User/hooks/checkAuth":"modules/User/hooks/checkAuth.tsx"}],"components/Page.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Page = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _styles = require("@material-ui/core/styles");
-
-var _core = require("@material-ui/core");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-const useStyles = (0, _styles.makeStyles)(({
-  spacing,
-  mixins
-}) => (0, _styles.createStyles)({
-  page: {
-    flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
-    paddingTop: spacing(3),
-    paddingBottom: spacing(4)
-  },
-  navbarSpacer: mixins.toolbar,
-  content: {
-    paddingTop: spacing(3),
-    paddingBottom: spacing(4)
-  }
-}));
-
-const Page = ({
-  children
-}) => {
-  const classes = useStyles();
-  return /*#__PURE__*/_react.default.createElement("main", {
-    className: classes.page
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: classes.navbarSpacer
-  }), /*#__PURE__*/_react.default.createElement(_core.Container, {
-    className: classes.content,
-    maxWidth: "md"
-  }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
-    container: true,
-    direction: "row",
-    justify: "center",
-    alignItems: "center"
-  }, /*#__PURE__*/_react.default.createElement(_core.Link, {
-    href: "https://github.com/pau1tuck/tsgrad-mui",
-    target: "_blank",
-    rel: "noopener noreferrer"
-  }, /*#__PURE__*/_react.default.createElement(_core.Typography, null, "TSGRAD-MUI: GraphQL, React, Apollo Client, and Python Django boilerplate with TypeScript and Material-UI")), /*#__PURE__*/_react.default.createElement("br", null)), children));
-};
-
-exports.Page = Page;
-
-__signature__(Page, "useStyles{classes}", () => [useStyles]);
-
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Page.tsx");
-  reactHotLoader.register(Page, "Page", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Page.tsx");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-},{"react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"config/graphql.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.usePostsQuery = usePostsQuery;
-exports.usePostsLazyQuery = usePostsLazyQuery;
-exports.useLoginMutation = useLoginMutation;
-exports.useRegisterMutation = useRegisterMutation;
-exports.useUserQuery = useUserQuery;
-exports.useUserLazyQuery = useUserLazyQuery;
-exports.useVerifyTokenMutation = useVerifyTokenMutation;
-exports.VerifyTokenDocument = exports.UserDocument = exports.RegisterDocument = exports.LoginDocument = exports.PostsDocument = void 0;
-
-var Apollo = _interopRequireWildcard(require("@apollo/client"));
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-const PostsDocument = (0, Apollo.gql)`
-  query Posts {
-    posts {
-      id
-      title
-      content
-      author {
-        id
-        firstname
-        lastname
-        email
-      }
-      createdAt
-    }
-  }
-`;
-exports.PostsDocument = PostsDocument;
-
-function usePostsQuery(baseOptions) {
-  return Apollo.useQuery(PostsDocument, baseOptions);
-}
-
-__signature__(usePostsQuery, "useQuery{}");
-
-function usePostsLazyQuery(baseOptions) {
-  return Apollo.useLazyQuery(PostsDocument, baseOptions);
-}
-
-__signature__(usePostsLazyQuery, "useLazyQuery{}");
-
-const LoginDocument = (0, Apollo.gql)`
-  mutation Login($email: String!, $password: String!) {
-    tokenAuth(email: $email, password: $password) {
-      token
-    }
-  }
-`;
-exports.LoginDocument = LoginDocument;
-
-function useLoginMutation(baseOptions) {
-  return Apollo.useMutation(LoginDocument, baseOptions);
-}
-
-__signature__(useLoginMutation, "useMutation{}");
-
-const RegisterDocument = (0, Apollo.gql)`
-  mutation Register(
-    $firstname: String!
-    $lastname: String!
-    $email: String!
-    $password: String!
-  ) {
-    createUser(
-      firstname: $firstname
-      lastname: $lastname
-      email: $email
-      password: $password
-    ) {
-      user {
-        id
-        firstname
-        lastname
-        email
-        password
-      }
-    }
-  }
-`;
-exports.RegisterDocument = RegisterDocument;
-
-function useRegisterMutation(baseOptions) {
-  return Apollo.useMutation(RegisterDocument, baseOptions);
-}
-
-__signature__(useRegisterMutation, "useMutation{}");
-
-const UserDocument = (0, Apollo.gql)`
-  query User {
-    user {
-      id
-      firstname
-      lastname
-      email
-    }
-  }
-`;
-exports.UserDocument = UserDocument;
-
-function useUserQuery(baseOptions) {
-  return Apollo.useQuery(UserDocument, baseOptions);
-}
-
-__signature__(useUserQuery, "useQuery{}");
-
-function useUserLazyQuery(baseOptions) {
-  return Apollo.useLazyQuery(UserDocument, baseOptions);
-}
-
-__signature__(useUserLazyQuery, "useLazyQuery{}");
-
-const VerifyTokenDocument = (0, Apollo.gql)`
-  mutation VerifyToken($token: String!) {
-    verifyToken(token: $token) {
-      payload
-    }
-  }
-`;
-exports.VerifyTokenDocument = VerifyTokenDocument;
-
-function useVerifyTokenMutation(baseOptions) {
-  return Apollo.useMutation(VerifyTokenDocument, baseOptions);
-}
-
-__signature__(useVerifyTokenMutation, "useMutation{}");
-
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(PostsDocument, "PostsDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(usePostsQuery, "usePostsQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(usePostsLazyQuery, "usePostsLazyQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(LoginDocument, "LoginDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(useLoginMutation, "useLoginMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(RegisterDocument, "RegisterDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(useRegisterMutation, "useRegisterMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(UserDocument, "UserDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(useUserQuery, "useUserQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(useUserLazyQuery, "useUserLazyQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(VerifyTokenDocument, "VerifyTokenDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-  reactHotLoader.register(useVerifyTokenMutation, "useVerifyTokenMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-},{"@apollo/client":"../node_modules/@apollo/client/index.js"}],"components/Header.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Header = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _client = require("@apollo/client");
-
-var _styles = require("@material-ui/core/styles");
-
-var _core = require("@material-ui/core");
-
-var _graphql = require("../config/graphql");
-
-var _jsCookie = _interopRequireDefault(require("js-cookie"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-
-const useStyles = (0, _styles.makeStyles)(({
-  palette
-}) => (0, _styles.createStyles)({
-  header: {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: palette.background.default,
-    color: palette.primary.main
-  },
-  appBar: {
-    background: "#1976d2"
-  },
-  brand: {
-    flexGrow: 1
-  },
-  button: {
-    marginLeft: "10px",
-    fontWeight: 700,
-    color: palette.primary.contrastText
-  },
-  link: {
-    color: palette.primary.contrastText
-  }
-}));
-
-const Header = ({}) => {
-  const classes = useStyles();
-  const client = (0, _client.useApolloClient)();
-  const {
-    data,
-    loading
-  } = (0, _graphql.useUserQuery)();
-  let body = null;
-
-  if (loading) {} else if (!(data === null || data === void 0 ? void 0 : data.user)) {
-    body = /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Button, {
-      className: classes.button
-    }, /*#__PURE__*/_react.default.createElement(_core.Link, {
-      component: _reactRouterDom.Link,
-      to: "/login",
-      className: classes.link
-    }, "Log in")), /*#__PURE__*/_react.default.createElement(_core.Button, {
-      variant: "contained",
-      color: "secondary",
-      className: classes.button
-    }, /*#__PURE__*/_react.default.createElement(_core.Link, {
-      component: _reactRouterDom.Link,
-      to: "/register",
-      className: classes.link
-    }, "Sign up")));
-  } else {
-    body = /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Box, {
-      mr: 2
-    }, "Welcome ", data.user.firstname), /*#__PURE__*/_react.default.createElement(_core.Button, {
-      onClick: () => __awaiter(void 0, void 0, void 0, function* () {
-        yield client.resetStore();
-
-        _jsCookie.default.remove("jwttoken");
-      }),
-      variant: "outlined",
-      className: classes.button
-    }, "Log out"));
-  }
-
-  return /*#__PURE__*/_react.default.createElement("header", {
-    className: classes.header
-  }, /*#__PURE__*/_react.default.createElement(_core.AppBar, {
-    position: "absolute",
-    className: classes.appBar
-  }, /*#__PURE__*/_react.default.createElement(_core.Toolbar, null, /*#__PURE__*/_react.default.createElement(_core.Typography, {
-    component: "h1",
-    variant: "h4",
-    color: "inherit",
-    noWrap: true,
-    className: classes.brand
-  }, "TSGRAD-MUI"), /*#__PURE__*/_react.default.createElement(_core.Box, null, body))));
-};
-
-exports.Header = Header;
-
-__signature__(Header, "useStyles{classes}\nuseApolloClient{client}\nuseUserQuery{{ data, loading }}", () => [useStyles, _client.useApolloClient, _graphql.useUserQuery]);
-
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(__awaiter, "__awaiter", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Header.tsx");
-  reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Header.tsx");
-  reactHotLoader.register(Header, "Header", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Header.tsx");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@apollo/client":"../node_modules/@apollo/client/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../config/graphql":"config/graphql.tsx","js-cookie":"../node_modules/js-cookie/src/js.cookie.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../config/routes":"config/routes.tsx","../modules/User/hooks/checkAuth":"modules/User/hooks/checkAuth.tsx"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -105806,10 +105376,6 @@ var _routes = require("../config/routes");
 
 var _PrivateRoute = _interopRequireDefault(require("./PrivateRoute"));
 
-var _Page = require("./Page");
-
-var _Header = require("./Header");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -105836,7 +105402,7 @@ const Dashboard = /*#__PURE__*/_react.default.lazy(() => require("_bundle_loader
 const App = () => {
   return /*#__PURE__*/_react.default.createElement(_react.Suspense, {
     fallback: "Loading..."
-  }, /*#__PURE__*/_react.default.createElement(_Header.Header, null), /*#__PURE__*/_react.default.createElement(_Page.Page, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: _routes.ROUTES.home
   }, /*#__PURE__*/_react.default.createElement(Home, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -105848,7 +105414,7 @@ const App = () => {
   }, /*#__PURE__*/_react.default.createElement(Login, null)), /*#__PURE__*/_react.default.createElement(_PrivateRoute.default, {
     exact: true,
     path: _routes.ROUTES.dashboard
-  }, /*#__PURE__*/_react.default.createElement(Dashboard, null)))), /*#__PURE__*/_react.default.createElement(_global.GlobalStyle, null));
+  }, /*#__PURE__*/_react.default.createElement(Dashboard, null))), /*#__PURE__*/_react.default.createElement(_global.GlobalStyle, null));
 };
 
 const _default = App;
@@ -105877,7 +105443,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../styles/global":"styles/global.tsx","../config/routes":"config/routes.tsx","./PrivateRoute":"components/PrivateRoute.tsx","./Page":"components/Page.tsx","./Header":"components/Header.tsx","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","../modules/Home":[["Home.32d264a4.js","modules/Home/index.tsx"],"Home.32d264a4.js.map","modules/Home/index.tsx"],"../modules/User/pages/Register":[["Register.ebb45d52.js","modules/User/pages/Register.tsx"],"Register.ebb45d52.js.map","modules/User/pages/Register.tsx"],"../modules/User/pages/Login":[["Login.672ca285.js","modules/User/pages/Login.tsx"],"Login.672ca285.js.map","modules/User/pages/Login.tsx"],"../modules/Dashboard":[["Dashboard.a6093dfb.js","modules/Dashboard/index.tsx"],"Dashboard.a6093dfb.js.map","modules/Dashboard/index.tsx"]}],"index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../styles/global":"styles/global.tsx","../config/routes":"config/routes.tsx","./PrivateRoute":"components/PrivateRoute.tsx","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","../modules/Home":[["Home.32d264a4.js","modules/Home/index.tsx"],"Home.32d264a4.js.map","modules/Home/index.tsx"],"../modules/User/pages/Register":[["Register.ebb45d52.js","modules/User/pages/Register.tsx"],"Register.ebb45d52.js.map","modules/User/pages/Register.tsx"],"../modules/User/pages/Login":[["Login.672ca285.js","modules/User/pages/Login.tsx"],"Login.672ca285.js.map","modules/User/pages/Login.tsx"],"../modules/Dashboard":[["Dashboard.a6093dfb.js","modules/Dashboard/index.tsx"],"Dashboard.a6093dfb.js.map","modules/Dashboard/index.tsx"]}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 require("regenerator-runtime/runtime");
@@ -105899,7 +105465,462 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_AppProvider.AppProvider, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.HashRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null))), document.getElementById("root"));
-},{"regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./providers/AppProvider":"providers/AppProvider.tsx","./components/App":"components/App.tsx"}],"../node_modules/@babel/runtime/helpers/interopRequireDefault.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./providers/AppProvider":"providers/AppProvider.tsx","./components/App":"components/App.tsx"}],"config/graphql.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.usePostsQuery = usePostsQuery;
+exports.usePostsLazyQuery = usePostsLazyQuery;
+exports.useLoginMutation = useLoginMutation;
+exports.useLogoutMutation = useLogoutMutation;
+exports.useMeQuery = useMeQuery;
+exports.useMeLazyQuery = useMeLazyQuery;
+exports.useRegisterMutation = useRegisterMutation;
+exports.useVerifyTokenMutation = useVerifyTokenMutation;
+exports.VerifyTokenDocument = exports.RegisterDocument = exports.MeDocument = exports.LogoutDocument = exports.LoginDocument = exports.PostsDocument = void 0;
+
+var Apollo = _interopRequireWildcard(require("@apollo/client"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+const PostsDocument = (0, Apollo.gql)`
+    query Posts {
+  posts {
+    id
+    title
+    content
+    author {
+      id
+      firstName
+      lastName
+      email
+    }
+    createdAt
+  }
+}
+    `;
+exports.PostsDocument = PostsDocument;
+
+function usePostsQuery(baseOptions) {
+  return Apollo.useQuery(PostsDocument, baseOptions);
+}
+
+__signature__(usePostsQuery, "useQuery{}");
+
+function usePostsLazyQuery(baseOptions) {
+  return Apollo.useLazyQuery(PostsDocument, baseOptions);
+}
+
+__signature__(usePostsLazyQuery, "useLazyQuery{}");
+
+const LoginDocument = (0, Apollo.gql)`
+    mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    token
+    refreshToken
+  }
+}
+    `;
+exports.LoginDocument = LoginDocument;
+
+function useLoginMutation(baseOptions) {
+  return Apollo.useMutation(LoginDocument, baseOptions);
+}
+
+__signature__(useLoginMutation, "useMutation{}");
+
+const LogoutDocument = (0, Apollo.gql)`
+    mutation logout($refreshToken: String!) {
+  revokeToken(refreshToken: $refreshToken) {
+    success
+    errors
+  }
+}
+    `;
+exports.LogoutDocument = LogoutDocument;
+
+function useLogoutMutation(baseOptions) {
+  return Apollo.useMutation(LogoutDocument, baseOptions);
+}
+
+__signature__(useLogoutMutation, "useMutation{}");
+
+const MeDocument = (0, Apollo.gql)`
+    query Me {
+  me {
+    id
+    firstName
+    lastName
+    email
+  }
+}
+    `;
+exports.MeDocument = MeDocument;
+
+function useMeQuery(baseOptions) {
+  return Apollo.useQuery(MeDocument, baseOptions);
+}
+
+__signature__(useMeQuery, "useQuery{}");
+
+function useMeLazyQuery(baseOptions) {
+  return Apollo.useLazyQuery(MeDocument, baseOptions);
+}
+
+__signature__(useMeLazyQuery, "useLazyQuery{}");
+
+const RegisterDocument = (0, Apollo.gql)`
+    mutation Register($firstName: String!, $lastName: String!, $email: String!, $password1: String!) {
+  register(firstName: $firstName, lastName: $lastName, email: $email, username: $email, password1: $password1, password2: $password1) {
+    success
+    errors
+    token
+  }
+}
+    `;
+exports.RegisterDocument = RegisterDocument;
+
+function useRegisterMutation(baseOptions) {
+  return Apollo.useMutation(RegisterDocument, baseOptions);
+}
+
+__signature__(useRegisterMutation, "useMutation{}");
+
+const VerifyTokenDocument = (0, Apollo.gql)`
+    mutation VerifyToken($token: String!) {
+  verifyToken(token: $token) {
+    payload
+  }
+}
+    `;
+exports.VerifyTokenDocument = VerifyTokenDocument;
+
+function useVerifyTokenMutation(baseOptions) {
+  return Apollo.useMutation(VerifyTokenDocument, baseOptions);
+}
+
+__signature__(useVerifyTokenMutation, "useMutation{}");
+
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(PostsDocument, "PostsDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(usePostsQuery, "usePostsQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(usePostsLazyQuery, "usePostsLazyQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(LoginDocument, "LoginDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(useLoginMutation, "useLoginMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(LogoutDocument, "LogoutDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(useLogoutMutation, "useLogoutMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(MeDocument, "MeDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(useMeQuery, "useMeQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(useMeLazyQuery, "useMeLazyQuery", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(RegisterDocument, "RegisterDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(useRegisterMutation, "useRegisterMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(VerifyTokenDocument, "VerifyTokenDocument", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+  reactHotLoader.register(useVerifyTokenMutation, "useVerifyTokenMutation", "/home/paul/Public/dev/tsgrad-mui/client/src/config/graphql.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"@apollo/client":"../node_modules/@apollo/client/index.js"}],"components/Header.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Header = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _client = require("@apollo/client");
+
+var _styles = require("@material-ui/core/styles");
+
+var _core = require("@material-ui/core");
+
+var _graphql = require("../config/graphql");
+
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+const useStyles = (0, _styles.makeStyles)(({
+  palette
+}) => (0, _styles.createStyles)({
+  header: {
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: palette.background.default,
+    color: palette.primary.main
+  },
+  appBar: {
+    background: "#1976d2"
+  },
+  brand: {
+    flexGrow: 1
+  },
+  button: {
+    marginLeft: "10px",
+    fontWeight: 700,
+    color: palette.primary.contrastText
+  },
+  link: {
+    color: palette.primary.contrastText
+  }
+}));
+
+const Header = () => {
+  const classes = useStyles();
+  const client = (0, _client.useApolloClient)();
+  let {
+    data: userData,
+    loading: isLoading
+  } = (0, _graphql.useMeQuery)();
+  const [logout, {
+    loading: loggingOut
+  }] = (0, _graphql.useLogoutMutation)();
+  const history = (0, _reactRouterDom.useHistory)();
+  let body = null;
+  const [isLoggedIn, setIsLoggedIn] = (0, _react.useState)(!!_jsCookie.default.get("jwttoken"));
+
+  if (!isLoggedIn) {
+    body = /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Button, {
+      className: classes.button
+    }, /*#__PURE__*/_react.default.createElement(_core.Link, {
+      component: _reactRouterDom.Link,
+      to: "/login",
+      className: classes.link
+    }, "Log in")), /*#__PURE__*/_react.default.createElement(_core.Button, {
+      variant: "contained",
+      color: "secondary",
+      className: classes.button
+    }, /*#__PURE__*/_react.default.createElement(_core.Link, {
+      component: _reactRouterDom.Link,
+      to: "/register",
+      className: classes.link
+    }, "Sign up")));
+  } else {
+    let refreshtoken = _jsCookie.default.get("refreshtoken");
+
+    body = /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Button, {
+      onClick: () => __awaiter(void 0, void 0, void 0, function* () {
+        yield client.resetStore();
+
+        _jsCookie.default.remove("jwttoken");
+
+        _jsCookie.default.remove("refreshtoken");
+
+        userData = undefined;
+        setIsLoggedIn(false);
+        history.push("/");
+      }),
+      variant: "outlined",
+      className: classes.button
+    }, "Log out"));
+  }
+
+  console.log("Header userdata: " + userData);
+  console.log(isLoggedIn);
+  return /*#__PURE__*/_react.default.createElement("header", {
+    className: classes.header
+  }, /*#__PURE__*/_react.default.createElement(_core.AppBar, {
+    position: "absolute",
+    className: classes.appBar
+  }, /*#__PURE__*/_react.default.createElement(_core.Toolbar, null, /*#__PURE__*/_react.default.createElement(_core.Typography, {
+    component: "h1",
+    variant: "h4",
+    color: "inherit",
+    noWrap: true,
+    className: classes.brand
+  }, "Material-UI"), /*#__PURE__*/_react.default.createElement(_core.Box, null, body))));
+};
+
+exports.Header = Header;
+
+__signature__(Header, "useStyles{classes}\nuseApolloClient{client}\nuseMeQuery{{ data: userData, loading: isLoading }}\nuseLogoutMutation{[logout, { loading: loggingOut }]}\nuseHistory{history}\nuseState{[isLoggedIn, setIsLoggedIn](!!Cookie.get(\"jwttoken\"))}", () => [useStyles, _client.useApolloClient, _graphql.useMeQuery, _graphql.useLogoutMutation, _reactRouterDom.useHistory]);
+
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(__awaiter, "__awaiter", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Header.tsx");
+  reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Header.tsx");
+  reactHotLoader.register(Header, "Header", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Header.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@apollo/client":"../node_modules/@apollo/client/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../config/graphql":"config/graphql.tsx","js-cookie":"../node_modules/js-cookie/src/js.cookie.js"}],"components/Page.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Page = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styles = require("@material-ui/core/styles");
+
+var _core = require("@material-ui/core");
+
+var _Header = require("./Header");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+const useStyles = (0, _styles.makeStyles)(({
+  spacing,
+  mixins
+}) => (0, _styles.createStyles)({
+  page: {
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+    paddingTop: spacing(3),
+    paddingBottom: spacing(4)
+  },
+  navbarSpacer: mixins.toolbar,
+  content: {
+    paddingTop: spacing(3),
+    paddingBottom: spacing(4)
+  }
+}));
+
+const Page = ({
+  children
+}) => {
+  const classes = useStyles();
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.Header, null), /*#__PURE__*/_react.default.createElement("main", {
+    className: classes.page
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.navbarSpacer
+  }), /*#__PURE__*/_react.default.createElement(_core.Container, {
+    className: classes.content,
+    maxWidth: "md"
+  }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    container: true,
+    direction: "row",
+    justify: "center",
+    alignItems: "center"
+  }, /*#__PURE__*/_react.default.createElement(_core.Link, {
+    href: "https://github.com/pau1tuck/tsgrad-mui",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/_react.default.createElement(_core.Typography, null, "TSGRAD-MUI: GraphQL, React, Apollo Client, and Python Django boilerplate with TypeScript and Material-UI")), /*#__PURE__*/_react.default.createElement("br", null)), children)));
+};
+
+exports.Page = Page;
+
+__signature__(Page, "useStyles{classes}", () => [useStyles]);
+
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(useStyles, "useStyles", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Page.tsx");
+  reactHotLoader.register(Page, "Page", "/home/paul/Public/dev/tsgrad-mui/client/src/components/Page.tsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+},{"react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","./Header":"components/Header.tsx"}],"../node_modules/@babel/runtime/helpers/interopRequireDefault.js":[function(require,module,exports) {
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
     "default": obj
@@ -105989,12 +106010,12 @@ const Input = ({
   let autocomplete = "";
 
   switch (type) {
-    case "firstname":
+    case "firstName":
       label = "First name";
       autocomplete = "given-name";
       break;
 
-    case "lastname":
+    case "lastName":
       label = "Last name";
       autocomplete = "family-name";
       break;
@@ -116904,7 +116925,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39985" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40001" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -252,8 +252,6 @@ var _jsCookie = _interopRequireDefault(require("js-cookie"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _routes = require("../../../config/routes");
-
 var _variables = require("../../../config/constants/variables");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -271,12 +269,14 @@ const useAuthToken = () => {
   const client = (0, _client.useApolloClient)();
   const history = (0, _reactRouterDom.useHistory)();
 
-  const setAuthCookie = token => {
-    localStorage.setItem(_variables.LOCAL_STORAGE.token, token);
+  const setAuthCookie = (jwtToken, refreshToken) => {
+    localStorage.setItem(_variables.LOCAL_STORAGE.token, jwtToken);
 
-    _jsCookie.default.set("jwttoken", token);
+    _jsCookie.default.set("jwttoken", jwtToken);
 
-    history.push(_routes.ROUTES.dashboard);
+    _jsCookie.default.set("refreshtoken", refreshToken);
+
+    history.push("/dashboard");
   };
 
   const logout = () => {
@@ -319,7 +319,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/routes":"config/routes.tsx","../../../config/constants/variables":"config/constants/variables.tsx"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/SuccessOutlined.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@apollo/client":"../node_modules/@apollo/client/index.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../../config/constants/variables":"config/constants/variables.tsx"}],"../node_modules/@material-ui/lab/esm/internal/svg-icons/SuccessOutlined.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -877,7 +877,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -899,7 +899,13 @@ var _useAuthToken = _interopRequireDefault(require("../hooks/useAuthToken"));
 
 var _ErrorMessage = require("../../../components/ErrorMessage");
 
+var _client = require("@apollo/client");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -971,6 +977,7 @@ const useStyles = (0, _styles.makeStyles)(({
 
 const LoginForm = () => {
   const classes = useStyles();
+  const history = (0, _reactRouterDom.useHistory)();
   const [login] = (0, _graphql.useLoginMutation)();
   const {
     register,
@@ -984,9 +991,11 @@ const LoginForm = () => {
   const {
     setAuthCookie
   } = (0, _useAuthToken.default)();
+  const [isLoggedIn, setIsLoggedIn] = (0, _react.useState)(false);
+  const client = (0, _client.useApolloClient)();
 
   const onFormSubmit = values => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
+    var _a, _b;
 
     const {
       email,
@@ -1000,10 +1009,23 @@ const LoginForm = () => {
     });
 
     if (response && response.data) {
-      const jwt = (_a = response.data.tokenAuth) === null || _a === void 0 ? void 0 : _a.token;
+      const jwtToken = (_a = response.data.login) === null || _a === void 0 ? void 0 : _a.token;
+      console.log("Login response: " + response.data);
+      const refreshToken = (_b = response.data.login) === null || _b === void 0 ? void 0 : _b.refreshToken;
 
-      if (jwt) {
-        setAuthCookie(jwt);
+      if (jwtToken) {
+        setAuthCookie(jwtToken, refreshToken);
+        client.writeFragment({
+          id: "5",
+          fragment: (0, _client.gql)`
+            fragment MyTodo on me {
+              completed
+            }
+          `,
+          data: {
+            completed: true
+          }
+        });
       }
     }
   });
@@ -1018,14 +1040,14 @@ const LoginForm = () => {
     noValidate: true,
     onSubmit: handleSubmit(onFormSubmit)
   }, /*#__PURE__*/_react.default.createElement(_Input.default, {
-    type: _login.fieldNames.email,
+    type: "email",
     register: register,
     autofocus: true
   }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.ErrorMessage, {
     errors: errors,
     type: _login.fieldNames.email
   }), /*#__PURE__*/_react.default.createElement(_Input.default, {
-    type: _login.fieldNames.password,
+    type: "password",
     register: register
   }), /*#__PURE__*/_react.default.createElement(_ErrorMessage.ErrorMessage, {
     errors: errors,
@@ -1064,7 +1086,7 @@ const LoginForm = () => {
   }, "Don't have an account? Sign up")))));
 };
 
-__signature__(LoginForm, "useStyles{classes}\nuseLoginMutation{[login]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}", () => [useStyles, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default]);
+__signature__(LoginForm, "useStyles{classes}\nuseHistory{history}\nuseLoginMutation{[login]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}\nuseState{[isLoggedIn, setIsLoggedIn](false)}\nuseApolloClient{client}", () => [useStyles, _reactRouterDom.useHistory, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default, _client.useApolloClient]);
 
 const _default = LoginForm;
 var _default2 = _default;
@@ -1090,7 +1112,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/LockOutlined":"../node_modules/@material-ui/icons/LockOutlined.js","./Input":"modules/User/components/Input.tsx","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/login":"modules/User/validations/login.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","@material-ui/icons/LockOutlined":"../node_modules/@material-ui/icons/LockOutlined.js","./Input":"modules/User/components/Input.tsx","react-hook-form":"../node_modules/react-hook-form/dist/react-hook-form.es.js","../validations/login":"modules/User/validations/login.tsx","../../../config/graphql":"config/graphql.tsx","../hooks/useAuthToken":"modules/User/hooks/useAuthToken.tsx","../../../components/ErrorMessage":"components/ErrorMessage.tsx","@apollo/client":"../node_modules/@apollo/client/index.js"}],"modules/User/pages/Login.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1113,6 +1135,8 @@ var _LoginForm = _interopRequireDefault(require("../components/LoginForm"));
 var _Footer = require("../../../components/Footer");
 
 var _routes = require("../../../config/routes");
+
+var _Page = require("../../../components/Page");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1151,7 +1175,7 @@ const Login = () => {
       history.push(_routes.ROUTES.dashboard);
     }
   }, []);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Container, {
+  return /*#__PURE__*/_react.default.createElement(_Page.Page, null, /*#__PURE__*/_react.default.createElement(_core.Container, {
     component: "main",
     maxWidth: "xs"
   }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
@@ -1185,7 +1209,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../hooks/checkAuth":"modules/User/hooks/checkAuth.tsx","../components/LoginForm":"modules/User/components/LoginForm.tsx","../../../components/Footer":"components/Footer.tsx","../../../config/routes":"config/routes.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../hooks/checkAuth":"modules/User/hooks/checkAuth.tsx","../components/LoginForm":"modules/User/components/LoginForm.tsx","../../../components/Footer":"components/Footer.tsx","../../../config/routes":"config/routes.tsx","../../../components/Page":"components/Page.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1213,7 +1237,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39985" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40001" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

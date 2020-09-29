@@ -6,6 +6,7 @@ import checkAuth from "../hooks/checkAuth";
 import LoginForm from "../components/LoginForm";
 import { Footer } from "../../../components/Footer";
 import { ROUTES } from "../../../config/routes";
+import { Page } from "../../../components/Page";
 
 const useStyles = makeStyles(({ spacing }: Theme) =>
   createStyles({
@@ -31,7 +32,7 @@ const Login = () => {
     }
   }, []);
   return (
-    <div>
+    <Page>
       <Container component="main" maxWidth="xs">
         <Paper elevation={3} className={classes.paper}>
           <LoginForm />
@@ -39,7 +40,7 @@ const Login = () => {
         </Paper>
       </Container>
       <Footer />
-    </div>
+    </Page>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useApolloClient } from "@apollo/client";
 import Cookie from "js-cookie";
 import { useHistory, Redirect } from "react-router-dom";
@@ -9,11 +9,12 @@ const useAuthToken = () => {
   const client = useApolloClient();
   const history = useHistory();
 
-  const setAuthCookie = (token: string) => {
-    localStorage.setItem(LOCAL_STORAGE.token, token);
-    Cookie.set("jwttoken", token);
+  const setAuthCookie = (jwtToken: any, refreshToken: any) => {
+    localStorage.setItem(LOCAL_STORAGE.token, jwtToken);
+    Cookie.set("jwttoken", jwtToken);
+    Cookie.set("refreshtoken", refreshToken);
     // Cookie.set("jwttoken", token { secure: true });
-    history.push(ROUTES.dashboard);
+    history.push("/dashboard");
   };
 
   const logout = () => {

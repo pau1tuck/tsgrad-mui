@@ -9,7 +9,7 @@ const Posts = () => {
     <div key={post?.id}>
       <h2>{post?.title}</h2>
       <p>
-        {post?.author.firstname} {post.author.lastname}
+        {post?.author.firstName} {post.author.lastName}
       </p>
       <p>{post?.createdAt}</p>
       <p>{post?.content}</p>
@@ -28,6 +28,7 @@ const Posts = () => {
     <div>
       <br />
       <div>{posts}</div>
+      {console.log(data.posts)}
     </div>
   );
 };

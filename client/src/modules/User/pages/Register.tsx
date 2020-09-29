@@ -6,6 +6,7 @@ import checkAuth from "../hooks/checkAuth";
 import { ROUTES } from "../../../config/routes";
 import { RegisterForm } from "../components/RegisterForm";
 import { Footer } from "../../../components/Footer";
+import { Page } from "../../../components/Page";
 
 const useStyles = makeStyles(({ spacing }: Theme) =>
   createStyles({
@@ -31,7 +32,7 @@ const Register = () => {
     }
   }, []);
   return (
-    <div>
+    <Page>
       <Container component="main" maxWidth="xs">
         <Paper elevation={3} className={classes.paper}>
           <RegisterForm />
@@ -39,7 +40,7 @@ const Register = () => {
         </Paper>
       </Container>
       <Footer />
-    </div>
+    </Page>
   );
 };
 

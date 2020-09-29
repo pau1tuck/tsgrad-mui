@@ -319,17 +319,17 @@ const RegisterForm = () => {
 
   const onFormSubmit = values => __awaiter(void 0, void 0, void 0, function* () {
     const {
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
-      password
+      password1
     } = values;
     const response = yield createUser({
       variables: {
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         email,
-        password
+        password1
       }
     });
     console.log("Form submitted");
@@ -347,11 +347,11 @@ const RegisterForm = () => {
     noValidate: true,
     onSubmit: handleSubmit(onFormSubmit)
   }, /*#__PURE__*/_react.default.createElement(_Input.default, {
-    type: "firstname",
+    type: "firstName",
     register: register,
     autofocus: true
   }), /*#__PURE__*/_react.default.createElement(_Input.default, {
-    type: "lastname",
+    type: "lastName",
     register: register
   }), /*#__PURE__*/_react.default.createElement(_Input.default, {
     type: "email",
@@ -425,6 +425,8 @@ var _RegisterForm = require("../components/RegisterForm");
 
 var _Footer = require("../../../components/Footer");
 
+var _Page = require("../../../components/Page");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -462,7 +464,7 @@ const Register = () => {
       history.push(_routes.ROUTES.dashboard);
     }
   }, []);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_core.Container, {
+  return /*#__PURE__*/_react.default.createElement(_Page.Page, null, /*#__PURE__*/_react.default.createElement(_core.Container, {
     component: "main",
     maxWidth: "xs"
   }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
@@ -496,7 +498,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../hooks/checkAuth":"modules/User/hooks/checkAuth.tsx","../../../config/routes":"config/routes.tsx","../components/RegisterForm":"modules/User/components/RegisterForm.tsx","../../../components/Footer":"components/Footer.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","../hooks/checkAuth":"modules/User/hooks/checkAuth.tsx","../../../config/routes":"config/routes.tsx","../components/RegisterForm":"modules/User/components/RegisterForm.tsx","../../../components/Footer":"components/Footer.tsx","../../../components/Page":"components/Page.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -524,7 +526,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39985" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40001" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

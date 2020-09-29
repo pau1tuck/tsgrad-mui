@@ -5,8 +5,8 @@ query Posts {
     content
     author {
       id
-      firstname
-      lastname
+      firstName
+      lastName
       email
     }
     createdAt

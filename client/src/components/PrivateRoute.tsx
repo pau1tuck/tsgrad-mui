@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Cookie from "js-cookie";
 import { Route, useHistory } from "react-router-dom";
 import { ROUTES } from "../config/routes";
-import { useUserQuery } from "../config/graphql";
+import { useMeQuery } from "../config/graphql";
 import { LOCAL_STORAGE_TEMPLATE } from "../config/authToken";
 import checkAuth from "../modules/User/hooks/checkAuth";
 

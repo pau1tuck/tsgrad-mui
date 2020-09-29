@@ -150,7 +150,7 @@ const Posts = () => {
   } = (0, _graphql.usePostsQuery)();
   const posts = (_a = data === null || data === void 0 ? void 0 : data.posts) === null || _a === void 0 ? void 0 : _a.map(post => /*#__PURE__*/_react.default.createElement("div", {
     key: post === null || post === void 0 ? void 0 : post.id
-  }, /*#__PURE__*/_react.default.createElement("h2", null, post === null || post === void 0 ? void 0 : post.title), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.author.firstname, " ", post.author.lastname), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.createdAt), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.content)));
+  }, /*#__PURE__*/_react.default.createElement("h2", null, post === null || post === void 0 ? void 0 : post.title), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.author.firstName, " ", post.author.lastName), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.createdAt), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.content)));
 
   if (loading) {
     return /*#__PURE__*/_react.default.createElement("div", null, "Loading...");
@@ -161,7 +161,7 @@ const Posts = () => {
     return /*#__PURE__*/_react.default.createElement("div", null, "Error...");
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, posts));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, posts), console.log(data.posts));
 };
 
 __signature__(Posts, "usePostsQuery{{ data, error, loading }}", () => [_graphql.usePostsQuery]);
@@ -198,7 +198,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _client = require("@apollo/client");
+
 var _Posts = _interopRequireDefault(require("../Posts"));
+
+var _Page = require("../../components/Page");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -212,8 +216,25 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 const Dashboard = () => {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Posts.default, null));
+  const client = (0, _client.useApolloClient)();
+  const query = (0, _client.gql)`
+    query me {
+      me {
+        id
+        firstName
+        lastName
+        email
+      }
+    }
+  `;
+  const data = client.readQuery({
+    query
+  });
+  console.log("User data: " + data);
+  return /*#__PURE__*/_react.default.createElement(_Page.Page, null, /*#__PURE__*/_react.default.createElement(_Posts.default, null));
 };
+
+__signature__(Dashboard, "useApolloClient{client}", () => [_client.useApolloClient]);
 
 const _default = Dashboard;
 var _default2 = _default;
@@ -237,7 +258,7 @@ exports.default = _default2;
   var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
   leaveModule && leaveModule(module);
 })();
-},{"react":"../node_modules/react/index.js","../Posts":"modules/Posts/index.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@apollo/client":"../node_modules/@apollo/client/index.js","../Posts":"modules/Posts/index.tsx","../../components/Page":"components/Page.tsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -265,7 +286,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39985" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40001" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

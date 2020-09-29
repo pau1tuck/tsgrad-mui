@@ -1,5 +1,5 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import {
@@ -10,7 +10,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { useUserQuery } from "../config/graphql";
+import { useMeQuery, useLogoutMutation } from "../config/graphql";
 import Cookie from "js-cookie";
 
 const useStyles = makeStyles(({ palette }: Theme) =>
@@ -36,18 +36,18 @@ const useStyles = makeStyles(({ palette }: Theme) =>
   })
 );
 
-interface NavBarProps {}
-
-export const Header: React.FC<NavBarProps> = ({}) => {
+export const Header: React.FC = () => {
   const classes = useStyles();
   const client = useApolloClient();
-  const { data, loading } = useUserQuery();
+  let { data: userData, loading: isLoading } = useMeQuery();
+  const [logout, { loading: loggingOut }] = useLogoutMutation();
+  const history = useHistory();
 
   let body = null;
 
-  if (loading) {
-    // No user data present:
-  } else if (!data?.user) {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookie.get("jwttoken"));
+
+  if (!isLoggedIn) {
     body = (
       <>
         <Button className={classes.button}>
@@ -68,13 +68,17 @@ export const Header: React.FC<NavBarProps> = ({}) => {
     );
     // User is logged in:
   } else {
+    let refreshtoken: any = Cookie.get("refreshtoken");
     body = (
       <>
-        <Box mr={2}>Welcome {data.user.firstname}</Box>
         <Button
           onClick={async () => {
             await client.resetStore();
             Cookie.remove("jwttoken");
+            Cookie.remove("refreshtoken");
+            userData = undefined;
+            setIsLoggedIn(false);
+            history.push("/");
           }}
           variant="outlined"
           className={classes.button}
@@ -84,6 +88,9 @@ export const Header: React.FC<NavBarProps> = ({}) => {
       </>
     );
   }
+
+  console.log("Header userdata: " + userData);
+  console.log(isLoggedIn);
 
   return (
     <header className={classes.header}>
@@ -96,7 +103,7 @@ export const Header: React.FC<NavBarProps> = ({}) => {
             noWrap
             className={classes.brand}
           >
-            TSGRAD-MUI
+            Material-UI
           </Typography>
           <Box>{body}</Box>
         </Toolbar>
@@ -104,3 +111,5 @@ export const Header: React.FC<NavBarProps> = ({}) => {
     </header>
   );
 };
+
+//<Box mr={2}>Welcome, {userData.me.firstName}.</Box>
