@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 import graphene
 from graphene_django import DjangoObjectType
-import graphql_jwt
 from graphql_auth import mutations
+import graphql_jwt
+import graphql_social_auth
 
 
 class AuthMutation(graphene.ObjectType):
@@ -81,4 +82,5 @@ class CreateUser(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     login = ObtainJWToken.Field()
+    social_auth = graphql_social_auth.SocialAuthJWT.Field()
     #create_user = CreateUser.Field()

@@ -1,0 +1,8 @@
+mutation GoogleAuth($provider: String!, $accessToken: String!) {
+  socialAuth(provider: $provider, accessToken: $accessToken) {
+    social {
+      uid
+    }
+    token
+  }
+}

@@ -3,10 +3,11 @@ import { useHistory } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
 import checkAuth from "../hooks/checkAuth";
-import LoginForm from "../components/LoginForm";
-import { Footer } from "../../../components/Footer";
 import { ROUTES } from "../../../config/routes";
 import { Page } from "../../../components/Page";
+import LoginForm from "../components/LoginForm";
+import { GoogleAuthButton } from "../components/GoogleAuthButton";
+import { Footer } from "../../../components/Footer";
 
 const useStyles = makeStyles(({ spacing }: Theme) =>
   createStyles({
@@ -36,6 +37,15 @@ const Login = () => {
       <Container component="main" maxWidth="xs">
         <Paper elevation={3} className={classes.paper}>
           <LoginForm />
+          <br></br>
+          <GoogleAuthButton>
+            <img
+              src="/static/client/assets/images/google-icon.png"
+              width="20px"
+              height="20px"
+            ></img>
+            &nbsp;&nbsp; Log in with Google
+          </GoogleAuthButton>
         </Paper>
       </Container>
       <Footer />

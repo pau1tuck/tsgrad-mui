@@ -20,7 +20,7 @@ import Input from "./Input";
 import { useForm, Controller } from "react-hook-form";
 import { fieldNames, validationSchema } from "../validations/login";
 import { useLoginMutation } from "../../../config/graphql";
-import useAuthToken from "../hooks/useAuthToken";
+import { useAuthToken } from "../hooks/useAuthToken";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import { useAlert } from "react-alert";
 import { gql, useApolloClient } from "@apollo/client";
@@ -72,9 +72,8 @@ const LoginForm = () => {
     if (response && response.data) {
       const jwtToken = response.data.login?.token;
       console.log("Login response: " + response.data);
-      const refreshToken = response.data.login?.refreshToken;
       if (jwtToken) {
-        setAuthCookie(jwtToken, refreshToken);
+        setAuthCookie(jwtToken);
         client.writeFragment({
           id: "5",
           fragment: gql`
