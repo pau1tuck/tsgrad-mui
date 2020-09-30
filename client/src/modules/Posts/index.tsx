@@ -11,7 +11,7 @@ const Posts = () => {
       <p>
         {post?.author.firstName} {post.author.lastName}
       </p>
-      <p>{post?.createdAt}</p>
+      <p>{new Date(post?.createdAt).toLocaleDateString("en-GB")}</p>
       <p>{post?.content}</p>
     </div>
   ));
@@ -28,7 +28,6 @@ const Posts = () => {
     <div>
       <br />
       <div>{posts}</div>
-      {console.log(data.posts)}
     </div>
   );
 };

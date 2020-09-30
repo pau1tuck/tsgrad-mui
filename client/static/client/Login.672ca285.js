@@ -117,26 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/@material-ui/icons/LockOutlined.js":[function(require,module,exports) {
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
-}), 'LockOutlined');
-
-exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"modules/User/validations/login.tsx":[function(require,module,exports) {
+})({"modules/User/validations/login.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -215,7 +196,7 @@ exports.LOCAL_STORAGE = LOCAL_STORAGE;
   LOCAL_STORAGE["token"] = "x-token";
 })(LOCAL_STORAGE || (exports.LOCAL_STORAGE = LOCAL_STORAGE = {}));
 
-let authToken = "";
+const authToken = "";
 exports.authToken = authToken;
 ;
 
@@ -977,7 +958,6 @@ const useStyles = (0, _styles.makeStyles)(({
 
 const LoginForm = () => {
   const classes = useStyles();
-  const history = (0, _reactRouterDom.useHistory)();
   const [login] = (0, _graphql.useLoginMutation)();
   const {
     register,
@@ -1075,7 +1055,7 @@ const LoginForm = () => {
     xs: true
   }, /*#__PURE__*/_react.default.createElement(_core.Link, {
     component: _reactRouterDom.Link,
-    to: "/",
+    to: "/forgot",
     variant: "body2"
   }, "Forgot password?")), /*#__PURE__*/_react.default.createElement(_core.Grid, {
     item: true
@@ -1086,7 +1066,7 @@ const LoginForm = () => {
   }, "Don't have an account? Sign up")))));
 };
 
-__signature__(LoginForm, "useStyles{classes}\nuseHistory{history}\nuseLoginMutation{[login]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}\nuseState{[isLoggedIn, setIsLoggedIn](false)}\nuseApolloClient{client}", () => [useStyles, _reactRouterDom.useHistory, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default, _client.useApolloClient]);
+__signature__(LoginForm, "useStyles{classes}\nuseLoginMutation{[login]}\nuseForm{{ register, handleSubmit, errors, control }}\nuseAuthToken{{ setAuthCookie }}\nuseState{[isLoggedIn, setIsLoggedIn](false)}\nuseApolloClient{client}", () => [useStyles, _graphql.useLoginMutation, _reactHookForm.useForm, _useAuthToken.default, _client.useApolloClient]);
 
 const _default = LoginForm;
 var _default2 = _default;
@@ -1237,7 +1217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40001" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44227" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

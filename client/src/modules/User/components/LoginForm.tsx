@@ -51,8 +51,7 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
 
 const LoginForm = () => {
   const classes = useStyles();
-  const history = useHistory();
-  const [login] = useLoginMutation();
+  const [login, { loading, error }] = useLoginMutation();
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
@@ -133,7 +132,7 @@ const LoginForm = () => {
         </Button>
         <Grid container className={classes.options}>
           <Grid item xs>
-            <Link component={RouterLink} to="/" variant="body2">
+            <Link component={RouterLink} to="/forgot" variant="body2">
               Forgot password?
             </Link>
           </Grid>

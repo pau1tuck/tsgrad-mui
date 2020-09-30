@@ -36,7 +36,6 @@ const Login = () => {
       <Container component="main" maxWidth="xs">
         <Paper elevation={3} className={classes.paper}>
           <LoginForm />
-          {/*<Footer />*/}
         </Paper>
       </Container>
       <Footer />

@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Page } from "../../components/Page";
+import Login from "../User/pages/Login";
 
 const Home = () => {
   const alert = useAlert();
   const welcome = useEffect(() => {
     alert.show("Welcome");
   });
-  return <Page></Page>;
+  return <Login />;
 };
 
 export default Home;

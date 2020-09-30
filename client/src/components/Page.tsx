@@ -2,7 +2,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Box, Container, Grid, Link, Typography } from "@material-ui/core";
-import { Header } from "./Header";
+import { Header } from "./Header/Header";
 
 const useStyles = makeStyles(({ spacing, mixins }: Theme) =>
   createStyles({

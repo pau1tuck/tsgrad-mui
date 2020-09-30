@@ -5,6 +5,7 @@
   "scripts": {
     "gen": "graphql-codegen --config codegen.yml",
     "compile": "tsc -w",
+    "lint": "eslint src/",
     "dev": "parcel src/index.tsx --out-dir static/client",
     "build": "parcel build src/index.html --out-dir build/release --public-url ./",
     "test": "jest --config='./jest.config.js' ",

@@ -4,7 +4,9 @@ import Cookie from "js-cookie";
 import { useMeQuery } from "../../../config/graphql";
 
 const checkAuth = () => {
-  const loggedIn = Boolean(Cookie.get("jwttoken"));
+  const loggedIn = Boolean(
+    Cookie.get("jwttoken") && Cookie.get("refreshtoken")
+  );
 
   if (!loggedIn) {
     console.log("Logged in? = false");

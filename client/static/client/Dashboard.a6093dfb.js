@@ -150,7 +150,7 @@ const Posts = () => {
   } = (0, _graphql.usePostsQuery)();
   const posts = (_a = data === null || data === void 0 ? void 0 : data.posts) === null || _a === void 0 ? void 0 : _a.map(post => /*#__PURE__*/_react.default.createElement("div", {
     key: post === null || post === void 0 ? void 0 : post.id
-  }, /*#__PURE__*/_react.default.createElement("h2", null, post === null || post === void 0 ? void 0 : post.title), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.author.firstName, " ", post.author.lastName), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.createdAt), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.content)));
+  }, /*#__PURE__*/_react.default.createElement("h2", null, post === null || post === void 0 ? void 0 : post.title), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.author.firstName, " ", post.author.lastName), /*#__PURE__*/_react.default.createElement("p", null, new Date(post === null || post === void 0 ? void 0 : post.createdAt).toLocaleDateString("en-GB")), /*#__PURE__*/_react.default.createElement("p", null, post === null || post === void 0 ? void 0 : post.content)));
 
   if (loading) {
     return /*#__PURE__*/_react.default.createElement("div", null, "Loading...");
@@ -161,7 +161,7 @@ const Posts = () => {
     return /*#__PURE__*/_react.default.createElement("div", null, "Error...");
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, posts), console.log(data.posts));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, posts));
 };
 
 __signature__(Posts, "usePostsQuery{{ data, error, loading }}", () => [_graphql.usePostsQuery]);
@@ -286,7 +286,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40001" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46379" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

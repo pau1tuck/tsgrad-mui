@@ -8,8 +8,8 @@ interface iInput {
 }
 
 const Input = ({ type, register, autofocus }: iInput) => {
-  let label: string = "";
-  let autocomplete: string = "";
+  let label = "";
+  let autocomplete = "";
   switch (type) {
     case "firstName":
       label = "First name";
