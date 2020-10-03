@@ -61,7 +61,6 @@ export const Header = () => {
 
   if (loading) return <Loading />;
   if (error || !data) {
-    console.log(error?.message);
     return <div>Error...</div>;
   }
   return (
@@ -105,8 +104,7 @@ export const Header = () => {
           ) : (
             <Box>
               <span className={classes.message}>
-                Welcome, {data?.me?.firstName}.{console.log("WHAT?! " + error)}
-                {console.log(loading)}
+                Welcome, {data?.me?.firstName}.
               </span>
               <LogoutButton />
             </Box>

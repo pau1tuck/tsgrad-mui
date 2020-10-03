@@ -1,6 +1,0 @@
-mutation ForgotPassword($email: String!) {
-  sendPasswordResetEmail(email: $email) {
-    success
-    errors
-  }
-}

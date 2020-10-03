@@ -6,7 +6,7 @@ import server.core.schema
 from graphql_auth.schema import UserQuery, MeQuery
 
 
-class Query(UserQuery, MeQuery, server.core.schema.Query, graphene.ObjectType):
+class Query(UserQuery, MeQuery, server.core.schema.PostsQuery, graphene.ObjectType):
     pass
 
 

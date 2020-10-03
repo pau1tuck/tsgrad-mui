@@ -1,35 +1,24 @@
 import React from "react";
+import { Link as RouterLink, Switch } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import { usePostsQuery } from "../../config/graphql";
+import { Page } from "../../components/Page";
+import { Box, Link, Paper } from "@material-ui/core";
+import { ROUTES } from "./routes";
+import { Routes } from "../../components/Routes";
+import { PostComponent } from "./components/PostComponent";
 
-const Posts = () => {
-  const { data, error, loading } = usePostsQuery();
-
-  const posts = data?.posts?.map((post: any) => (
-    <div key={post?.id}>
-      <h2>{post?.title}</h2>
-      <p>
-        {post?.author.firstName} {post.author.lastName}
-      </p>
-      <p>{new Date(post?.createdAt).toLocaleDateString("en-GB")}</p>
-      <p>{post?.content}</p>
-    </div>
-  ));
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error || !data) {
-    console.log(error?.message);
-    return <div>Error...</div>;
-  }
-
+const PostsModule = () => {
   return (
-    <div>
+    <Page>
+      <Switch>
+        {ROUTES.map((route, i) => (
+          <Routes key={i} {...route} />
+        ))}
+      </Switch>
       <br />
-      <div>{posts}</div>
-    </div>
+    </Page>
   );
 };
 
-export default Posts;
+export default PostsModule;

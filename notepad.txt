@@ -13,3 +13,8 @@ mutation {
     email
   }
 }
+
+  const alert = useAlert();
+  const welcome = useEffect(() => {
+    alert.show("Welcome");
+  });

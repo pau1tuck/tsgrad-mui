@@ -19,7 +19,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input";
 import { useForm, Controller } from "react-hook-form";
 import { useForgotPasswordMutation } from "../../../config/graphql";
-import useAuthToken from "../hooks/useAuthToken";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import { useAlert } from "react-alert";
 import { gql, useApolloClient } from "@apollo/client";
@@ -34,7 +33,7 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
       width: "100%", // Fixes IE 11 issue.
       marginTop: spacing(3),
     },
-    note: {
+    message: {
       paddingBottom: spacing(2),
     },
     submit: { margin: spacing(4, 0, 2) },
@@ -42,10 +41,10 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
 );
 
 const validationSchema = yup.object().shape({
-  ["email"]: yup.string().email().min(6).max(30).required().label("This field"),
+  ["email"]: yup.string().email().required().label("This field"),
 });
 
-const ForgotPasswordForm: React.FC<{}> = ({}) => {
+export const ForgotPasswordForm: React.FC = () => {
   const classes = useStyles();
   const [ForgotPassword] = useForgotPasswordMutation();
   const { register, handleSubmit, errors, control } = useForm({
@@ -90,7 +89,7 @@ const ForgotPasswordForm: React.FC<{}> = ({}) => {
           component="p"
           variant="body1"
           align="center"
-          className={classes.note}
+          className={classes.message}
         >
           {message}
         </Typography>
@@ -111,5 +110,3 @@ const ForgotPasswordForm: React.FC<{}> = ({}) => {
     </>
   );
 };
-
-export default ForgotPasswordForm;

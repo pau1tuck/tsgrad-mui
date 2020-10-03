@@ -1,13 +1,23 @@
 import React from "react";
-import { useGoogleAuthMutation } from "../../../config/graphql";
+import { makeVar } from "@apollo/client";
+import { useSocialAuthMutation } from "../../../config/graphql";
 import { GoogleLogin } from "react-google-login";
 import { GOOGLE_CLIENT_ID } from "../../../config/socialAuth";
 import { useAuthToken } from "../hooks/useAuthToken";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 
+const useStyles = makeStyles(({ spacing }: Theme) =>
+  createStyles({
+    socialButton: {
+      marginBottom: spacing(1),
+    },
+  })
+);
+
 export const GoogleAuthButton: React.FC = ({ children }) => {
-  const [GoogleAuth, { error, data }] = useGoogleAuthMutation();
+  const classes = useStyles();
+  const [socialAuth, { error, data }] = useSocialAuthMutation();
   const { setAuthCookie } = useAuthToken();
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -15,6 +25,7 @@ export const GoogleAuthButton: React.FC = ({ children }) => {
     if (data && data.socialAuth && data.socialAuth.token) {
       setIsLoading(false);
       setAuthCookie(data.socialAuth.token);
+      const authType = makeVar(["GOOGLE"]);
     }
   }, [data, setAuthCookie]);
 
@@ -27,8 +38,7 @@ export const GoogleAuthButton: React.FC = ({ children }) => {
 
   const handleSuccess = async (response: any) => {
     const { accessToken } = response;
-
-    GoogleAuth({
+    socialAuth({
       variables: {
         provider: "social_core.backends.google.GoogleOAuth2",
         accessToken,
@@ -48,7 +58,12 @@ export const GoogleAuthButton: React.FC = ({ children }) => {
       onRequest={() => setIsLoading(true)}
       cookiePolicy={"single_host_origin"}
       render={(renderProps) => (
-        <Button onClick={renderProps.onClick} variant="outlined">
+        <Button
+          onClick={renderProps.onClick}
+          variant="outlined"
+          fullWidth
+          className={classes.socialButton}
+        >
           {children}
         </Button>
       )}

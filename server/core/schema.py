@@ -9,8 +9,12 @@ class PostType(DjangoObjectType):
         model = Post
 
 
-class Query(graphene.ObjectType):
+class PostsQuery(graphene.ObjectType):
     posts = graphene.List(PostType)
+    post = graphene.Field(PostType, id=graphene.String())
 
     def resolve_posts(self, info, **kwargs):
         return Post.objects.all()
+
+    def resolve_post(self, info, id):
+        return Post.objects.get(pk=id)

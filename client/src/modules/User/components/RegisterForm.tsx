@@ -44,27 +44,21 @@ export const RegisterForm: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const [createUser, { loading, error }] = useRegisterMutation();
-  const { register, errors, control, handleSubmit } = useForm({
+  const [register, { loading, error }] = useRegisterMutation();
+  const { register: rhform, errors, control, handleSubmit } = useForm({
     validationSchema,
     mode: "onBlur",
     reValidateMode: "onSubmit",
   });
 
-  React.useEffect(() => {
-    Object.keys(fieldNames).forEach((key) => {
-      register({ name: key });
-    });
-  });
-
   const onFormSubmit = async (values: any) => {
-    const { firstName, lastName, email, password1 } = values;
-    const response = await createUser({
+    const { firstName, lastName, email, password } = values;
+    const response = await register({
       variables: {
         firstName,
         lastName,
         email,
-        password1,
+        password,
       },
     });
 
@@ -86,10 +80,10 @@ export const RegisterForm: React.FC = () => {
         noValidate
         onSubmit={handleSubmit(onFormSubmit)}
       >
-        <Input type="firstName" register={register} autofocus />
-        <Input type="lastName" register={register} />
-        <Input type="email" register={register} />
-        <Input type="password" register={register} />
+        <Input type="firstName" register={rhform} autofocus />
+        <Input type="lastName" register={rhform} />
+        <Input type="email" register={rhform} />
+        <Input type="password" register={rhform} />
         <Button
           type="submit"
           variant="contained"

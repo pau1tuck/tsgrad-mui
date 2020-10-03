@@ -24,6 +24,7 @@ export const LogoutButton = () => {
     <Button
       onClick={async () => {
         await client.clearStore();
+        await client.resetStore();
         Cookie.remove("jwttoken");
         Cookie.remove("refreshtoken");
         history.push("/");

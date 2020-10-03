@@ -3,18 +3,13 @@ import Cookie from "js-cookie";
 import { Route, useHistory } from "react-router-dom";
 import { ROUTES } from "../config/routes";
 import { useMeQuery } from "../config/graphql";
-import checkAuth from "../modules/User/hooks/checkAuth";
+import { checkAuth } from "../modules/User/hooks/checkAuth";
 
 interface IPrivateRoute {
-  path: string;
-  exact?: boolean;
-  children: React.ReactNode;
+  data: any;
 }
 
-export const PrivateRoute: React.FC<IPrivateRoute> = ({
-  children,
-  ...props
-}) => {
+export const PrivateRoute: React.FC<IPrivateRoute> = ({ data }) => {
   const isLoggedIn = checkAuth();
   const history = useHistory();
   /*
@@ -24,11 +19,19 @@ export const PrivateRoute: React.FC<IPrivateRoute> = ({
   useEffect(() => {
     if (!isLoggedIn) {
       console.log("Nice try, bastard.");
-      history.push(ROUTES.home);
+      history.push("/");
     }
   });
 
-  return <Route {...props}>{children}</Route>;
+  return (
+    <Route
+      path={data.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <data.component {...props} routes={data.routes} />
+      )}
+    />
+  );
 };
 
 export default PrivateRoute;

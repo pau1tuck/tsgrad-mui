@@ -1,6 +1,0 @@
-mutation logout($refreshToken: String!) {
-  revokeToken(refreshToken: $refreshToken) {
-    success
-    errors
-  }
-}

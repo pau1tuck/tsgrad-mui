@@ -3,10 +3,8 @@ import { useApolloClient } from "@apollo/client";
 import Cookie from "js-cookie";
 import { useMeQuery } from "../../../config/graphql";
 
-const checkAuth = () => {
-  const loggedIn = Boolean(
-    Cookie.get("jwttoken") && Cookie.get("refreshtoken")
-  );
+export const checkAuth = () => {
+  const loggedIn = Boolean(Cookie.get("jwttoken"));
 
   if (!loggedIn) {
     console.log("Logged in? = false");
@@ -15,5 +13,3 @@ const checkAuth = () => {
   console.log("Logged in? = true");
   return true;
 };
-
-export default checkAuth;

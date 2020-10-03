@@ -49,9 +49,9 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
   })
 );
 
-const LoginForm = () => {
+export const LoginForm: React.FC = () => {
   const classes = useStyles();
-  const [login, { loading, error }] = useLoginMutation();
+  const [Login, { loading, error }] = useLoginMutation();
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
@@ -62,7 +62,7 @@ const LoginForm = () => {
 
   const onFormSubmit = async (values: any) => {
     const { email, password } = values;
-    const response = await login({
+    const response = await Login({
       variables: {
         email,
         password,
@@ -145,5 +145,3 @@ const LoginForm = () => {
     </>
   );
 };
-
-export default LoginForm;
