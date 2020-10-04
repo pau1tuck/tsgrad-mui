@@ -4,8 +4,10 @@ import { useApolloClient } from "@apollo/client";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
+  IconButton,
   Link,
   Toolbar,
   Typography,
@@ -14,6 +16,7 @@ import { useMeQuery } from "../../config/graphql";
 import Cookie from "js-cookie";
 import { LogoutButton } from "./LogoutButton";
 import { Loading } from "../Loading";
+import { AvatarButton } from "./AvatarButton";
 
 const useStyles = makeStyles(({ palette }: Theme) =>
   createStyles({
@@ -37,6 +40,7 @@ const useStyles = makeStyles(({ palette }: Theme) =>
       textDecoration: "none",
     },
     message: { paddingRight: "10px", fontWeight: 700 },
+
     button: {
       marginLeft: "10px",
       fontWeight: 700,
@@ -54,26 +58,20 @@ export const Header = () => {
     fetchPolicy: "cache-and-network",
   });
 
-  let body = null;
-  const avatar = null;
-
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookie.get("jwttoken"));
 
-  if (loading) return <Loading />;
+  if (loading) return null;
   if (error || !data) {
     return <div>Error...</div>;
   }
+  const userData = data?.me;
   return (
     <header className={classes.header}>
       <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
-          <Link
-            component={RouterLink}
-            to="/dashboard"
-            className={classes.brand}
-          >
+          <Link component={RouterLink} to="/" className={classes.brand}>
             <Typography component="h1" variant="h4" color="inherit" noWrap>
-              Material-UI
+              MATERIAL-UI
             </Typography>
           </Link>
           {!isLoggedIn ? (
@@ -106,10 +104,9 @@ export const Header = () => {
               <span className={classes.message}>
                 Welcome, {data?.me?.firstName}.
               </span>
-              <LogoutButton />
+              <AvatarButton src="/static/client/assets/images/1.jpeg" />
             </Box>
           )}
-          {console.log(data)}
         </Toolbar>
       </AppBar>
     </header>

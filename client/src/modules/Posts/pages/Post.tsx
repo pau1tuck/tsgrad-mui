@@ -5,7 +5,6 @@ import { usePostQuery } from "../../../config/graphql";
 import { Page } from "../../../components/Page";
 import { Box, Link, Paper } from "@material-ui/core";
 import { PostComponent } from "../components/PostComponent";
-import { Postie } from "../components/Postie";
 
 const Post = () => {
   let { id } = useParams();
@@ -14,7 +13,7 @@ const Post = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return null;
   }
   if (error || !post?.post) {
     console.log(error?.message);
@@ -24,7 +23,7 @@ const Post = () => {
     <Paper elevation={6}>
       <br />
       <Box p={2}>
-        <Postie post={post.post} />
+        <PostComponent post={post.post} />
       </Box>
     </Paper>
   );

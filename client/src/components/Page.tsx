@@ -42,6 +42,7 @@ export const Page: React.FC = ({ children }) => {
             </Link>
             <br></br>
           </Grid>
+          <br />
           {children}
         </Container>
       </main>

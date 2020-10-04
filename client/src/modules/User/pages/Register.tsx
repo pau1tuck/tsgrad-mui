@@ -30,7 +30,7 @@ const Register: React.FC = () => {
   useEffect(() => {
     if (loggedIn) {
       console.log("Logged in:" + loggedIn);
-      history.push("/dashboard");
+      history.push("/my");
     }
   }, []);
   return (

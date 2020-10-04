@@ -5,7 +5,7 @@ import { usePostsQuery } from "../../config/graphql";
 import { Page } from "../../components/Page";
 import { Box, Link, Paper } from "@material-ui/core";
 import { ROUTES } from "./routes";
-import { Routes } from "../../components/Routes";
+import { Route } from "../../components/Route";
 import { PostComponent } from "./components/PostComponent";
 
 const PostsModule = () => {
@@ -13,10 +13,9 @@ const PostsModule = () => {
     <Page>
       <Switch>
         {ROUTES.map((route, i) => (
-          <Routes key={i} {...route} />
+          <Route key={i} {...route} />
         ))}
       </Switch>
-      <br />
     </Page>
   );
 };

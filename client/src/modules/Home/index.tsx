@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
-import { useAlert } from "react-alert";
-import { Link, Switch } from "react-router-dom";
-import { Routes } from "../../components/Routes";
-import { ROUTES as UserRoutes } from "../User/routes";
+import { useHistory } from "react-router-dom";
+import { checkAuth } from "../User/hooks/checkAuth";
+import { Page } from "../../components/Page";
 
-const Home = ({}) => {
+const Home = () => {
+  const loggedIn = checkAuth();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (loggedIn) {
+      console.log("Logged in:" + loggedIn);
+      history.push("/my");
+    }
+  }, []);
   return (
     <div>
-      Dog
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
-      <Switch>
-        {UserRoutes.map((route: any, i: number) => (
-          <Routes key={i} {...route} />
-        ))}
-      </Switch>
+      <Page>What the fuck?</Page>
     </div>
   );
 };

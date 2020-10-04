@@ -7,9 +7,7 @@ export const checkAuth = () => {
   const loggedIn = Boolean(Cookie.get("jwttoken"));
 
   if (!loggedIn) {
-    console.log("Logged in? = false");
     return false;
   }
-  console.log("Logged in? = true");
   return true;
 };

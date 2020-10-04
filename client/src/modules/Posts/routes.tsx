@@ -4,11 +4,6 @@ import Posts from "./pages/Posts";
 
 export const ROUTES = [
   {
-    path: "/posts/dog",
-    component: Post,
-    private: false,
-  },
-  {
     path: "/posts/:id",
     component: Post,
     private: true,
@@ -16,6 +11,6 @@ export const ROUTES = [
   {
     path: "/posts",
     component: Posts,
-    private: false,
+    private: true,
   },
 ];
