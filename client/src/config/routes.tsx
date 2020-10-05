@@ -6,7 +6,7 @@ import Posts from "../modules/Posts";
 import Register from "../modules/User/pages/Register";
 import Login from "../modules/User/pages/Login";
 import ForgotPassword from "../modules/User/pages/ForgotPassword";
-import Profile from "../modules/User/pages/Profile";
+import Settings from "../modules/User/pages/Settings";
 
 export const ROUTES = [
   {
@@ -38,8 +38,8 @@ export const ROUTES = [
     private: false,
   },
   {
-    path: "/my/profile",
-    component: Profile,
+    path: "/settings",
+    component: Settings,
     private: true,
   },
   {

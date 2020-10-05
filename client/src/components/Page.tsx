@@ -8,7 +8,6 @@ const useStyles = makeStyles(({ spacing, mixins }: Theme) =>
   createStyles({
     page: {
       flexGrow: 1,
-      height: "100vh",
       overflow: "auto",
       paddingTop: spacing(3),
       paddingBottom: spacing(4),

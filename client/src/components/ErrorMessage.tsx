@@ -8,18 +8,18 @@ interface iErrorMessage {
 }
 
 export const ErrorMessage = ({ errors, type }: iErrorMessage) => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     if (errors[type]) {
       setOpen(true);
     }
-  });
+  }, [errors[type]]);
   useEffect(() => {
     if (!errors[type]) {
       setOpen(false);
     }
-  });
+  }, [errors[type]]);
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === "clickaway") {
       return;
@@ -30,7 +30,7 @@ export const ErrorMessage = ({ errors, type }: iErrorMessage) => {
   if (!errors[type]) return null;
 
   return (
-    <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
       <Alert onClose={handleClose} severity="error">
         {errors[type].message}
       </Alert>
