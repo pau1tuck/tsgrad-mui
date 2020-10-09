@@ -2,7 +2,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import { usePostQuery } from "../../../config/graphql";
-import { Page } from "../../../components/Page";
 import { Box, Link, Paper } from "@material-ui/core";
 import { PostComponent } from "../components/PostComponent";
 

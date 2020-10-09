@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
 import { checkAuth } from "../hooks/checkAuth";
-import { ROUTES } from "../../../config/routes";
-import { Page } from "../../../components/Page";
 import { ForgotPasswordForm } from "../components/ForgotPasswordForm";
 import { Footer } from "../../../components/Footer";
 
@@ -20,7 +18,7 @@ const useStyles = makeStyles(({ spacing }: Theme) =>
   })
 );
 
-const ForgotPassword: React.FC = () => {
+const ForgotPassword = () => {
   const classes = useStyles();
   const loggedIn = checkAuth();
   const history = useHistory();
@@ -32,14 +30,14 @@ const ForgotPassword: React.FC = () => {
     }
   }, []);
   return (
-    <Page>
+    <>
       <Container component="main" maxWidth="xs">
         <Paper elevation={3} className={classes.paper}>
           <ForgotPasswordForm />
         </Paper>
       </Container>
       <Footer />
-    </Page>
+    </>
   );
 };
 

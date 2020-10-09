@@ -17,6 +17,7 @@ import Cookie from "js-cookie";
 import { LogoutButton } from "./LogoutButton";
 import { Loading } from "../Loading";
 import { AvatarButton } from "./AvatarButton";
+import { HeaderButtons } from "./HeaderButtons";
 
 const useStyles = makeStyles(({ palette }: Theme) =>
   createStyles({
@@ -39,32 +40,12 @@ const useStyles = makeStyles(({ palette }: Theme) =>
     title: {
       textDecoration: "none",
     },
-    message: { paddingRight: "10px", fontWeight: 700 },
-
-    button: {
-      marginLeft: "10px",
-      fontWeight: 700,
-      color: palette.primary.contrastText,
-    },
-    link: {
-      color: palette.primary.contrastText,
-    },
   })
 );
 
 export const Header = () => {
   const classes = useStyles();
-  const { loading, error, data } = useMeQuery({
-    fetchPolicy: "cache-and-network",
-  });
 
-  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookie.get("jwttoken"));
-
-  if (loading) return null;
-  if (error || !data) {
-    return <div>Error...</div>;
-  }
-  const userData = data?.me;
   return (
     <header className={classes.header}>
       <AppBar position="absolute" className={classes.appBar}>
@@ -74,43 +55,9 @@ export const Header = () => {
               MATERIAL-UI
             </Typography>
           </Link>
-          {!isLoggedIn ? (
-            <Box>
-              <Button className={classes.button}>
-                <Link
-                  component={RouterLink}
-                  to="/login"
-                  className={classes.link}
-                >
-                  Log in
-                </Link>
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
-              >
-                <Link
-                  component={RouterLink}
-                  to="/register"
-                  className={classes.link}
-                >
-                  Sign up
-                </Link>
-              </Button>
-            </Box>
-          ) : (
-            <Box>
-              <span className={classes.message}>
-                Welcome, {data?.me?.firstName}.
-              </span>
-              <AvatarButton src="/static/client/assets/images/1.jpeg" />
-            </Box>
-          )}
+          <HeaderButtons />
         </Toolbar>
       </AppBar>
     </header>
   );
 };
-
-//<Box mr={2}>Welcome, {userData.me.firstName}.</Box>

@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
 import { checkAuth } from "../hooks/checkAuth";
-import { ROUTES } from "../../../config/routes";
-import { Page } from "../../../components/Page";
 import { RegisterForm } from "../components/RegisterForm";
 import { GoogleAuthButton } from "../components/GoogleAuthButton";
 import { FacebookAuthButton } from "../components/FacebookAuthButton";
@@ -34,7 +32,7 @@ const Register: React.FC = () => {
     }
   }, []);
   return (
-    <Page>
+    <>
       <Container component="main" maxWidth="xs">
         <Paper elevation={3} className={classes.paper}>
           <RegisterForm />
@@ -59,7 +57,7 @@ const Register: React.FC = () => {
         </Paper>
       </Container>
       <Footer />
-    </Page>
+    </>
   );
 };
 

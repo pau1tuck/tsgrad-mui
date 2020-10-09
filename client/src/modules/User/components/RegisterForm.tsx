@@ -44,7 +44,7 @@ export const RegisterForm: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const [register, { loading, error }] = useRegisterMutation();
+  const [Register, { error }] = useRegisterMutation();
   const { register: rhform, errors, control, handleSubmit } = useForm({
     validationSchema,
     mode: "onBlur",
@@ -53,7 +53,7 @@ export const RegisterForm: React.FC = () => {
 
   const onFormSubmit = async (values: any) => {
     const { firstName, lastName, email, password } = values;
-    const response = await register({
+    const response = await Register({
       variables: {
         firstName,
         lastName,
@@ -62,9 +62,11 @@ export const RegisterForm: React.FC = () => {
       },
     });
 
-    console.log("Form submitted");
-    console.log(response);
-    history.push("/verify");
+    if (response && response.data && response.data.register?.success) {
+      console.log(response);
+      history.push("/verify");
+    }
+    console.log(error);
   };
 
   return (

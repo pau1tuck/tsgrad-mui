@@ -24,6 +24,7 @@ import { useAuthToken } from "../hooks/useAuthToken";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import { useAlert } from "react-alert";
 import { gql, useApolloClient } from "@apollo/client";
+import { isLoggedInVar } from "../../../config/cache";
 
 const useStyles = makeStyles(({ spacing, palette }: Theme) =>
   createStyles({
@@ -51,13 +52,12 @@ const useStyles = makeStyles(({ spacing, palette }: Theme) =>
 
 export const LoginForm: React.FC = () => {
   const classes = useStyles();
-  const [Login, { loading, error }] = useLoginMutation();
+  const [Login] = useLoginMutation();
   const { register, handleSubmit, errors, control } = useForm({
     validationSchema,
     mode: "onChange",
   });
   const { setAuthCookie } = useAuthToken();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const client = useApolloClient();
 
   const onFormSubmit = async (values: any) => {
@@ -73,6 +73,7 @@ export const LoginForm: React.FC = () => {
       const jwtToken = response.data.login?.token;
       console.log("Login response: " + response.data);
       if (jwtToken) {
+        isLoggedInVar(true);
         setAuthCookie(jwtToken);
         client.writeFragment({
           id: "5",

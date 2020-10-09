@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
 import { AppProvider } from "./providers/AppProvider";
-import App from "./components/App";
+import App from "./components/_app";
 
 ReactDOM.render(
   <AppProvider>
